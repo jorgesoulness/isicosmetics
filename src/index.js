@@ -1,4 +1,4 @@
-import "./styles/theme.scss";
+// import "./styles/theme.scss";
 import { load } from "@shopify/theme-sections";
 import "./scripts/sections/product";
 
