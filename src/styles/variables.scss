@@ -1,60 +1,98 @@
-// Text colors
-$color-body-text: var(--color-body-text);
+// ----------------------
+// == Site settings
+// ----------------------
 
-// Background colors
-$color-body: var(--color-main-background);
+// Routes
+$imgR: './assets/';
+$fontR: './assets/';
 
-// Placeholders
-$placeholder-color-foreground: #161d25;
-$placeholder-color-background: #f9fafb;
+// Fonts
+@include font-face("monregular", "Montserrat-Regular", $file-formats: woff);
+@include font-face("monitali", "Montserrat-Italic", $file-formats: woff);
+@include font-face("monthin", "Montserrat-Thin", $file-formats: woff);
+@include font-face("monmedium", "Montserrat-Medium", $file-formats: woff);
+@include font-face("monsemi", "Montserrat-SemiBold", $file-formats: woff);
+@include font-face("monbold", "Montserrat-Bold", $file-formats: woff);
+@include font-face("made", "madevon", $file-formats: woff);
+@include font-face("maderegular", "madevonregular", $file-formats: woff);
+$monregular: 'monregular', sans-serif;
+$monitali: 'monitali', sans-serif;
+$monthin: 'monthin', sans-serif;
+$monmedium: 'monmedium', sans-serif;
+$monsemi: 'monsemi', sans-serif;
+$monbold: 'monbold', sans-serif;
+$made: 'made', sans-serif;
+$maderegular: 'maderegular', sans-serif;
 
-// Other colors
-$color-accent: var(--color-accent);
-$color-border: var(--color-border);
+// = Colors
+// -----------------------------
 
-// Helper colors for form error states
-$color-disabled: #000000;
-$color-disabled-border: #000000;
-$color-error: #ff6d6d;
-$color-error-bg: #ffffff;
-$color-success: #000000;
-$color-success-bg: #000000;
+// Graphic chart
+$gray-1: #E8E3E7;
+$gray-2: #b3b0b3;
+$gray-3: #7e7d7f;
+$gray-4: #48494b;
+$gray-5: #131617;
+$col1: #FDF8F7;
+$col2: #fde4e7;
+$col3: #FBE5E7;
+$col4: #EDADBA;
+$col5: #D4B2B5;
+$col6: #C1989F;
+$col7: #945F00;
+$col8: #dad7dc;
+$col9: #566df0;
+$white: #ffffff;
+$black: #000000;
+$facebook: #1877f2;
+$twitter: #43bfe1;
+$google: #D64131;
 
-// Typography
-$font-heading: var(--font-heading);
-$font-body: var(--font-body);
-$font-body-weight: var(--font-body-weight);
-$font-body-style: var(--font-body-style);
-$font-body-bold-weight: var(--font-body-bold-weight);
+$c1: $gray-1;
+$c2: $gray-2;
+$c3: $gray-3;
+$c4: $gray-4;
+$c5: $gray-5;
 
-// Transitions
-$transition-duration: 250ms;
-$transition-timing: ease-in-out;
+// Display Flex
+@mixin displayFlex($disp, $direc, $justify, $items, $wrp) {
+  @include display($disp); @include flex-direction($direc); @include justify-content($justify); @include align-items($items); @include flex-wrap($wrp);
+}
 
-// Grid
-$grid-medium: 46.85em;
-$grid-large: 61.85em;
-$grid-widescreen: 87.5em;
-$grid-max-width: 73.75em;
-$grid-gutter: 30px;
+// Extend Clases
+.overlayClass {
+  width: 100%; height: 100%; @include position(fixed, 0 null null 0); margin: 0; padding: 0;
+}
+.overlayClassAbs {
+  width: 100%; height: 100%; @include position(absolute, 0 null null 0); margin: 0; padding: 0;
+}
+.absImg {
+  @include position(absolute, 50% null null 50%); @include transform(translate(-50%, -50%));
+}
 
-// Breakpoints used with the media-query mixin
-$small: 'small';
-$medium: 'medium';
-$medium-down: 'medium-down';
-$medium-up: 'medium-up';
-$large: 'large';
-$large-down: 'large-down';
-$large-up: 'large-up';
-$widescreen: 'widescreen';
+// Font Responsive Mixin
+@mixin fluid-type($min-font-size: 12px, $max-font-size: 21px, $lower-range: 420px, $upper-range: 900px) {
+  font-size: calc(#{$min-font-size} + #{(($max-font-size / ($max-font-size * 0 + 1)) - ($min-font-size / ($min-font-size * 0 + 1)))} * ( (100vw - #{$lower-range}) / #{(($upper-range / ($upper-range * 0 + 1)) - ($lower-range / ($lower-range * 0 + 1)))}));
+  @media screen and (max-width: $lower-range) {
+    font-size: $min-font-size;
+  }
+  @media screen and (min-width: $upper-range){
+    font-size: $max-font-size;
+  }
+}
 
-$breakpoints: (
-  $small '(max-width: #{$grid-medium - 1})',
-  $medium '(min-width: #{$grid-medium}) and (max-width: #{$grid-large - 1})',
-  $medium-down '(max-width: #{$grid-large - 1})',
-  $medium-up '(min-width: #{$grid-medium})',
-  $large '(min-width: #{$grid-large}) and (max-width: #{$grid-widescreen - 1})',
-  $large-down '(max-width: #{$grid-widescreen - 1})',
-  $large-up '(min-width: #{$grid-large})',
-  $widescreen '(min-width: #{$grid-widescreen})'
-);
+// Mixin Keyframes Button
+@include keyframes(button) {
+  0% {
+    opacity: 0;
+    @include transform(translate(-50px, 0px) skewX(-50deg)); width: 10%;
+  }
+  50% {
+    opacity: 1;
+    @include transform(translate(0, 0px) skewX(-50deg)); width: 100%;
+  }
+  100% {
+    opacity: 0;
+    @include transform(translate(300%, 0px) skewX(-50deg)); width: 50%;
+  }
+}

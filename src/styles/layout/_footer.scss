@@ -1,0 +1,66 @@
+/* ==|====================
+   Layout/Footer
+   ======================= */
+
+.g-footer {
+  width: 100%; height: auto; @include position(relative, null null null null); padding: 40px 0 40px 0; margin: auto 0 0 0; z-index: 3; background-color: $col1;
+}
+.listFooter {
+  width: 100%; height: auto; padding: 0; margin: 0; list-style-type: none; @include displayFlex(flex, column, center, center, wrap);
+  &__itemFoot {
+    width: 165px; list-style-type: none; padding: 0; margin: 0;
+  }
+  &__box {
+    width: 100%; height: auto; margin: 0; padding: 0; @include box-sizing(border-box);
+    &--brand {
+      text-align: center;
+      a {
+        display: block; width: 100%; height: auto; margin: 0 0 10px 0; padding: 0 0;
+        img {
+          display: block; width: 100%; height: auto; margin: 0; padding: 0; object-fit: contain; font-family: "object-fit: contain";
+        }
+        .site-title {
+          font-size: 0; text-indent: -9999px; color: $white; opacity: 0; margin: 0; padding: 0;
+        }
+      }
+      @media all and (min-width: 576px) {
+        a {
+          margin: 0;
+        }
+      }
+    }
+    &--socFoot {
+      list-style-type: none; @include displayFlex(flex, row, center, center, wrap);
+      li {
+        list-style-type: none;
+        &:last-child {
+          a {
+            margin: 0;
+          }
+        }
+      }
+      @media all and (min-width: 576px) {
+        @include displayFlex(flex, row, flex-start, center, wrap);
+      }
+    }
+    &--copyright {
+      p {
+        color: $white; text-align: center; margin: 0 0 15px 0; font-size: rem(10px);
+        a {
+          color: $white; text-decoration: none;
+          &:hover {
+            color: $white;
+          }
+        }
+      }
+      @media all and (min-width: 576px) {
+        p {
+          margin: 0;
+        }
+      }
+    }
+  }
+  @media all and (min-width: 576px) {
+    @include displayFlex(flex, row, center, center, wrap);
+  }
+}

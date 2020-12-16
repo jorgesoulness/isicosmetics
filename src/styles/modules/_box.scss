@@ -1,0 +1,28 @@
+/* ==|====================
+   Module/Box
+   ======================= */
+   
+// Cards Promos Small
+.figPromo {
+  width: 300px; height: 350px; background-color: $white; @include box-sizing(border-box); padding: 0; margin: 0 0 20px 0; position: relative; overflow: hidden; -webkit-border-radius: 10px 0 10px 10px; border-radius: 10px 0 10px 10px; box-shadow: 0 0 10px rgba($black, 0.20);
+  &__img {
+    width: 100%; height: 172px; position: relative; overflow: hidden; padding: 0; margin: 0; background-color: $white;
+    img {
+      width: auto; height: auto; display: block; margin: 0 auto; object-fit: cover; font-family: "object-fit: cover"; @include position(absolute, 0 null null 50%); z-index: 1; @include transform(scale(1.0) translateX(-50%)); @include transition(transform 400ms);
+    }
+    a {
+      @extend .overlayClassAbs; z-index: 2; text-indent: -9999px; font-size: 0;
+    }
+    &:hover {
+      img {
+        @include transform(scale(1.04) translateX(-50%));
+      }
+    }
+  }
+  &__cap {
+    width: 100%; height: auto; padding: 20px 20px 0; margin: 0; @include box-sizing(border-box); position: relative;
+  }
+  @media all and (min-width: 768px) {
+    height: 362px;
+  }
+}

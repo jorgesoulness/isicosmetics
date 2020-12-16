@@ -1,2 +1,2 @@
-# theme-shopify-puntovisual
-Tema para sitios en Shopify
+# ISI Cosmetics Theme
+Tema para Shopify
