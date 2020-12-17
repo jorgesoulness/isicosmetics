@@ -33,7 +33,6 @@ register('header-section', {
     }
     var botonabrir = document.querySelector(selecciona.botonabrir);
     botonabrir.addEventListener('click', menuOpenMobile);
-    // window.menuOpenMobile= menuOpenMobile;
 
     $(document).ready(function(){
       $('#md').clone().prependTo('#contListMenu').removeAttr('id').show();

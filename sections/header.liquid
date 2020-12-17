@@ -66,25 +66,19 @@
               <span>{{ cart.item_count }}</span>
             </a>
           </li>
+      {% unless linklists[section.settings.main_linklist] == blank %}
           <li class="controlsHead__item">
             <a id="openMenuMobile" class="controlsHead__link controlsHead__link--menuMobile" href="#" data-menu-expand="false">
               <span></span>
             </a>
           </li>
+      {% endunless %}
         </ul>
       </div>
     </div>
     <div class="menuMain">
       <nav class="menuDesk">
-        <ul id="md">
-          <li><a href="#">Inicio</a></li>
-          <li><a href="#">Labios</a></li>
-          <li><a href="#">Ojos</a></li>
-          <li><a href="#">Rostro</a></li>
-          <li><a href="#">Uñas</a></li>
-          <li><a href="#">Promociones</a></li>
-          <li><a href="#">Contacto</a></li>
-        </ul>
+        {% include 'site-nav', linklist: section.settings.main_linklist %}
       </nav>
     </div>
   </header>

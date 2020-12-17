@@ -101,32 +101,41 @@
 
 // Animated Social Button
 .btnSocial {
-  display: block; width: 31px; height: 31px; font-size: rem(15px); @include transition(all 0.23s ease); background-color: transparent; line-height: 31px; text-align: center; position: relative; overflow: hidden; margin: 0 12px 0 0; -webkit-box-shadow: 0 0 0 1px $white;box-shadow: 0 0 0 1px $white;
+  display: block; width: 35px; height: 35px; font-size: rem(18px); @include transition(all 0.23s ease); background-color: $col6; line-height: 35px; text-align: center; position: relative; overflow: hidden; margin: 0; box-shadow: 0;
   &:before, &:after {
-    font-family: 'fontAwesome'; @include position(absolute, 0 null null 0); width: 100%; height: 100%; color: $white; @include transition(transform 300ms ease-in-out, all 0.25s);
+    font-family: 'LineIcons'; @include position(absolute, 0 null null 0); width: 100%; height: 100%; color: $col1; @include transition(transform 300ms ease-in-out, all 0.25s);
   }
   &:before { @include transform(translateY(-100%)); }
   &:after { @include transform(translateY(0)); }
   &:hover {
-    background-color: $white;
+    background-color: $col4;
     &:before, &:after { color: $col1; }
     &:before { @include transform(translateY(0)); }
     &:after { @include transform(translateY(100%)); }
   }
   &__tni {
-    &--whatsapp { &:before, &:after { content: '\f232'; } }
-    &--facebook { &:before, &:after { content: '\f09a'; } }
-    &--twitter { &:before, &:after { content: '\f099'; } }
-    &--instagram { &:before, &:after { content: '\f16d'; } }
-    &--youtube { &:before, &:after { content: '\f16a'; } }
-    &--vimeo { &:before, &:after { content: '\f27d'; } }
-    &--linkedin { &:before, &:after { content: '\f0e1'; } }
+    &--whatsapp { &:before, &:after { content: '\ebf1'; } }
+    &--facebook { &:before, &:after { content: '\eab6'; } }
+    &--twitter { &:before, &:after { content: '\ebd8'; } }
+    &--instagram { &:before, &:after { content: '\eaf3'; } }
+    &--youtube { &:before, &:after { content: '\ebfd'; } }
+    &--vimeo { &:before, &:after { content: '\ebe3'; } }
+    &--linkedin { &:before, &:after { content: '\eb15'; } }
   }
   &.rounded {
     @include border-top-radius(6px); @include border-bottom-radius(6px);
   }
   &.circle {
     @include border-top-radius(50%); @include border-bottom-radius(50%);
+  }
+  @media all and (min-width: 769px) {
+    width: 40px; height: 40px; font-size: rem(20px); line-height: 40px;
+  }
+  @media all and (min-width: 1024px) {
+    width: 45px; height: 45px; font-size: rem(22px); line-height: 45px;
+  }
+  @media all and (min-width: 1216px) {
+    width: 50px; height: 50px; font-size: rem(25px); line-height: 50px;
   }
 }
 

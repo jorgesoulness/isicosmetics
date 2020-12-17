@@ -566,8 +566,7 @@ Object(_shopify_theme_sections__WEBPACK_IMPORTED_MODULE_0__["register"])('header
       botonabrir: '#openMenuMobile'
     };
     var botonabrir = document.querySelector(selecciona.botonabrir);
-    botonabrir.addEventListener('click', menuOpenMobile); // window.menuOpenMobile= menuOpenMobile;
-
+    botonabrir.addEventListener('click', menuOpenMobile);
     jquery__WEBPACK_IMPORTED_MODULE_1___default()(document).ready(function () {
       jquery__WEBPACK_IMPORTED_MODULE_1___default()('#md').clone().prependTo('#contListMenu').removeAttr('id').show();
       TweenMax.to(jquery__WEBPACK_IMPORTED_MODULE_1___default()('#mm'), 0, {
