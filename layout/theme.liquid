@@ -25,6 +25,7 @@
   <link rel="preload" href="{{ 'TweenMax.js' | asset_url }}" as="script">
   <link rel="preload" href="{{ 'custom.js' | asset_url }}" as="script">
   <link rel="preload" href="{{ 'theme.js' | asset_url }}" as="script">
+  <!-- <link rel="preload" href="{{ 'slick.min.js' | asset_url }}" as="script"> -->
   <link rel="preload" href="{{ 'lazysizes.js' | asset_url }}" as="script">
 
   {%- if canonical_url != blank  -%}
@@ -155,6 +156,7 @@
   <script src="{{ 'TweenMax.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'custom.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+  <!-- <script src="{{ 'slick.min.js' | asset_url }}" defer="defer"></script> -->
   <script src="{{ 'lazysizes.js' | asset_url }}" async="async"></script>
 
   <script type="text/javascript">
@@ -181,7 +183,7 @@
 
   {% section 'header' %}
 
-  <div class="page-container drawer-page-content" id="PageContainer">
+  <div class="page-container PageContainer drawer-page-content" id="PageContainer">
 
     <main class="main-content js-focus-hidden" id="MainContent" role="main" tabindex="-1">
       {{ content_for_layout }}

@@ -2,54 +2,33 @@
    Modules/Buttons
    ======================= */
 .btnSlideProd {
-  width: 30px; height: 100%; border: none; outline: 0; display: block; padding: 0; margin: 0; cursor: pointer; @include transition(all 0.23s); @include position(absolute, 0 null null null); opacity: 1.0;
+  width: 32px; height: 32px; border: none; outline: 0; display: block; padding: 0; margin: 0; cursor: pointer; @include transition(all 0.23s); @include position(absolute, 50% null null null); line-height: 32px; text-align: center; @include transform(translateY(-50%)); background-color: $col1; color: $c5; @include fluid-type(16px, 22px, 320px, 1216px);
   &:before {
-    content: ''; width: 23px; height: 23px; @include position(absolute, 50% null null 50%); @include transform(translate(-50%, -50%)); background-position: center; background-repeat: no-repeat; background-size: 100%;
+    font-family: 'LineIcons';
   }
   &.bLeftP {
-    left: 0; @include linear-gradient(to left, rgba($col1, 0) 0%, rgba($col1, 1.0) 50%);
+    left: 0;
     &:before {
-      background-image: url('#{$imgR}icons/control_left_white-01.svg');
+      content: '\ea5a';
     }
   }
   &.nRightP {
-    right: 0; @include linear-gradient(to right, rgba($col1, 0) 0%, rgba($col1, 1.0) 50%);
+    right: 0;
     &:before {
-      background-image: url('#{$imgR}icons/control_right_white-01.svg');
+      content: '\ea5c';
     }
   }
   &.slick-disabled {
     display: none; opacity: 0;
   }
   @media all and (min-width: 768px) {
-    width: 40px;
-    &.bLeftP {
-      left: 5px;
-    }
-    &.nRightP {
-      right: 5px;
-    }
+    width: 40px; height: 40px; line-height: 40px;
   }
-  @media all and (min-width: 1280px) {
-    width: 50px;
-    &:before {
-      width: 30px; height: 30px;
-    }
-    &.bLeftP {
-      left: 5px;
-    }
-    &.nRightP {
-      right: 5px;
-    }
+  @media all and (min-width: 992px) {
+    opacity: 0;
   }
-  @media all and (min-width: 1366px) {
-    width: 60px;
-    &.bLeftP {
-      left: -10px;
-    }
-    &.nRightP {
-      right: -10px;
-    }
+  @media all and (min-width: 1216px) {
+    width: 45px; height: 45px; line-height: 45px;
   }
 }
 // .btnsGenericos {
@@ -141,27 +120,28 @@
 
 // News buttons
 .btnpr {
-  height: 40px; display: inline-flex; position: relative; overflow: hidden; color: $white; font-size: rem(13px); text-decoration: none; border-radius: 6px 0 6px 6px; -webkit-border-radius: 6px 0 6px 6px; text-transform: uppercase; @include box-sizing(border-box); box-shadow: 0 4px 10px rgba($black, 0.20); text-align: center; line-height: 42px; padding: 0 30px; margin: 0 0 20px; @include transition(all 300ms); border: 1.4px solid $col1; cursor: pointer;
+  height: 40px; display: inline-flex; position: relative; overflow: hidden; color: $col1; font-size: rem(13px); text-decoration: none; border-radius: 0; -webkit-border-radius: 0; text-transform: uppercase; @include box-sizing(border-box); box-shadow: none; text-align: center; line-height: 40px; padding: 0 20px; margin: 0 0 20px; @include transition(all 300ms); border: 1px solid $col1; cursor: pointer; font-family: $monbold; outline: none;
   &__primary {
-    width: 200px;
+    width: 220px;
     span {
       @include position(absolute, 50% null null 0); @include transform(translate(0, -50%)); width: 100%; height: auto; letter-spacing: 0.85px; margin: 0; padding: 0; @include transition(transform 300ms);
     }
     i {
-      width: 30px; height: 20px; z-index: 1; @include position(absolute, 50% null null 5px); @include transform(translate(-100%, -50%)); font-size: rem(20px); @include transition(transform 300ms); line-height: 20px; text-align: center;
+      width: 30px; height: 40px; z-index: 1; @include position(absolute, 50% 5px null null); @include transform(translate(100%, -50%)); font-size: rem(20px); @include transition(transform 300ms); line-height: 40px; text-align: center;
     }
     &:hover {
+      color: $col1!important;
       span {
-        @include transform(translate(10%, -50%));
+        @include transform(translate(-7%, -50%));
       }
       i {
         @include transform(translate(0, -50%));
       }
     }
     &--border {
-      background: $col1; color: $white;
+      background: $col6; color: $col1;
       &:hover {
-        background: $white; color: $col1;
+        background: $col5; color: $col1;
       }
     }
     &--outline {
@@ -173,6 +153,12 @@
   }
   &.disabled {
     pointer-events: none!important; opacity: 0.85; cursor: none;
+  }
+  @media all and (min-width: 992px) {
+    height: 46px; font-size: rem(13px); line-height: 46px; padding: 0 30px; margin: 0 0 20px;
+    &__primary {
+      width: 220px;
+    }
   }
 }
 
@@ -193,25 +179,5 @@
   }
   &:hover {
     color: $col1;
-  }
-}
-
-// Social Buttons
-.buttonSocialLog {
-  width: 300px; height: 45px; display: block; margin: 0 auto 20px 0; padding: 0 20px; text-align: left; line-height: 45px; -webkit-border-radius: 6px; border-radius: 6px; @include box-sizing(border-box); text-decoration: none; @include transition(all 0.35s ease);
-  i {
-    margin-right: 10px; font-size: rem(22px);
-  }
-  &--google {
-    background-color: $google; color: $white;
-    &:hover {
-      background-color: rgba($google, 0.90); color: $white;
-    }
-  }
-  &--facebook {
-    background-color: $facebook; color: $white;
-    &:hover {
-      background-color: rgba($facebook, 0.90); color: $white;
-    }
   }
 }

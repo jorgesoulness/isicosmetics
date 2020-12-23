@@ -7,22 +7,10 @@
           "logo": "shopify:\/\/shop_images\/logo-isi-2.png",
           "main_linklist": "main-menu",
           "message": true,
-          "home_page_only": true,
+          "home_page_only": false,
           "message_text": "Anuncia algo aquí",
           "color_bg": "#3a3a3a",
           "color_text": "#ffffff"
-        }
-      },
-      "hero-1": {
-        "type": "hero",
-        "settings": {
-          "alignment": "center",
-          "hero_layout": "full_width",
-          "hero_size": "large",
-          "text_size": "large",
-          "title": "Imagen con texto superpuesto",
-          "text": "<p>Usa el texto superpuesto para darles información útil a tus clientes sobre tu marca. Selecciona imágenes y textos que se relacionen con tu estilo e historia.<\/p>",
-          "button_label": ""
         }
       },
       "feature-row": {
@@ -78,24 +66,12 @@
       "collection": {
         "type": "collection",
         "settings": {
-          "title": "Colección destacada",
-          "collection": "",
+          "title": "Mejores Ventas",
+          "collection": "mejores-ventas",
           "grid": 4,
-          "rows": 2,
+          "rows": 1,
           "show_vendor": false,
           "show_view_all": false
-        }
-      },
-      "hero-2": {
-        "type": "hero",
-        "settings": {
-          "alignment": "center",
-          "hero_layout": "full_width",
-          "hero_size": "medium",
-          "text_size": "large",
-          "title": "Imagen con texto superpuesto",
-          "text": "<p>Usa el texto superpuesto para darles información útil a tus clientes sobre tu marca. Selecciona imágenes y textos que se relacionen con tu estilo e historia.<\/p>",
-          "button_label": ""
         }
       },
       "quotes": {
@@ -172,8 +148,15 @@
           "footer-0": {
             "type": "link_list",
             "settings": {
-              "title": "Enlaces rápidos",
+              "title": "ISI Cosmetics",
               "menu": "footer"
+            }
+          },
+          "76e3332b-5ac7-422c-ae3a-51350b44a967": {
+            "type": "link_list",
+            "settings": {
+              "title": "Legales",
+              "menu": "legales"
             }
           },
           "footer-1": {
@@ -185,23 +168,59 @@
         },
         "block_order": [
           "footer-0",
+          "76e3332b-5ac7-422c-ae3a-51350b44a967",
           "footer-1"
         ],
         "settings": {
           "logo_footer": "shopify:\/\/shop_images\/logo-isi-2.png",
-          "show_payment_icons": true,
-          "show_currency_selector": true
+          "show_payment_icons": true
+        }
+      },
+      "160818536364f1b71e": {
+        "type": "feature-row",
+        "settings": {
+          "layout": "left",
+          "title": "Imagen con texto",
+          "text": "<p>Vincula un texto largo con una imagen para dar visibilidad a tu producto, colección o artículo de blog seleccionados. Agrega detalles sobre disponibilidad, estilo, o incluso ofrece una reseña.<\/p>",
+          "button_label": ""
+        }
+      },
+      "16082742227593e51f": {
+        "type": "hero-slider",
+        "blocks": {
+          "16082742227593e51f-0": {
+            "type": "image",
+            "settings": {
+              "slide_title": "Diapositiva de imagen",
+              "subheading": "<p>Usa este texto para compartir información sobre tu marca con tus clientes. Describe un producto, comparte anuncios o recibe clientes en tu tienda.<\/p>",
+              "button_label": ""
+            }
+          },
+          "16082742227593e51f-1": {
+            "type": "image",
+            "settings": {
+              "slide_title": "Diapositiva de imagen",
+              "subheading": "<p>Usa este texto para compartir información sobre tu marca con tus clientes. Describe un producto, comparte anuncios o recibe clientes en tu tienda.<\/p>",
+              "button_label": ""
+            }
+          }
+        },
+        "block_order": [
+          "16082742227593e51f-0",
+          "16082742227593e51f-1"
+        ],
+        "settings": {
+          "text_alignment": "center-slide",
+          "show_overlay": true,
+          "autorotate": false,
+          "autorotate_speed": 5
         }
       }
     },
     "content_for_index": [
-      "hero-1",
-      "feature-row",
-      "feature-columns",
-      "collection",
-      "hero-2",
-      "quotes",
-      "image-bar"
+      "16082742227593e51f",
+      "160818536364f1b71e",
+      "collection"
     ]
   },
   "presets": {

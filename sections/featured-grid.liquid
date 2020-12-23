@@ -1,0 +1,101 @@
+<section data-section-id="{{ section.id }}" data-section-type="featured-grid-section">
+  <div class="containerGridFeatured">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-full">
+
+          <div class="gridFeatured">
+            <figure class="figPromoHome">hola</figure>
+            <figure class="figPromoHome">hola</figure>
+            <figure class="figPromoHome">hola</figure>
+            <figure class="figPromoHome">hola</figure>
+          </div>
+
+        </div><!-- end.fullColumn -->
+      </div><!-- end.columns -->
+    </div><!-- end.container -->
+  </div><!-- end.containerFeatured -->
+</section>
+
+{% schema %}
+{
+  "name": {
+    "en": "Grid Box",
+    "es": "Grilla de Caja"
+  },
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": {
+        "en": "Heading",
+        "es": "Título"
+      },
+      "default": {
+        "en": "Text columns with images",
+        "es": "Columnas de texto con imágenes"
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": {
+        "en": "Image Box",
+        "es": "Imagen de Caja"
+      },
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": {
+            "en": "Image",
+            "es": "Imagen"
+          }
+        },
+        {
+          "type": "richtext",
+          "id": "subheading",
+          "label": {
+            "en": "Subheading",
+            "es": "Subtítulo"
+          },
+          "default": {
+            "en": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+            "es": "<p>Usa este texto para compartir información sobre tu marca con tus clientes. Describe un producto, comparte anuncios o recibe clientes en tu tienda.</p>"
+          }
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": {
+            "en": "Button link",
+            "es": "Enlace de la diapositiva"
+          }
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "en": "Grid with text and image",
+        "es": "Grilla con texto e imagen"
+      },
+      "category": {
+        "en": "Image",
+        "es": "Imagen"
+      },
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
