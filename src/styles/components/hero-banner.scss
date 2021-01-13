@@ -23,6 +23,10 @@
     }
     & p {
       @include fluid-type(14px, 16px, 320px, 1200px); font-family: $monitali; margin: 0;
+      & strong,
+      & b {
+        color: inherit; font-family: $monsemi;
+      }
     }
     & .btnpr {
       margin: 20px auto 0; display: block;
@@ -83,5 +87,5 @@
   }
 }
 .overlaySlide {
-  @extend .overlayClassAbs; background-color: rgba($col1, 0.20); z-index: 2;
+  @extend .overlayClassAbs; background-color: rgba($black, 0.20); z-index: 2;
 }

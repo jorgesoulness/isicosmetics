@@ -1,18 +1,4 @@
-{% comment %}
-    Renders a product card using "Grid" style
-    Accepts:
-    - max_height: {Number} Maximum height of the product's image (required)
-    - product: {Object} Product Liquid object (required)
-    - show_vendor: {Boolean} Show the product's vendor depending on the section setting (optional)
-
-    Usage:
-    {% include 'product-card-grid', max_height: max_height, product: product, show_vendor: section.settings.show_vendor %}
-{% endcomment %}
-          {% case section.settings.grid %}
-          {% when 2 %}
-            {%- assign class_height = ' heightBoxProd' -%}
-          {% endcase %}
-          <div class="prodListGrid{% unless product.available %} sold-out-prod{% endunless %}{{ class_height }}">
+            <div class="prodListGrid{% unless product.available %} sold-out-prod{% endunless %}">
           {% capture img_id %}ProductCardImage-{{ section.id }}-{{ product.id }}{% endcapture %}
           {% capture wrapper_id %}ProductCardImageWrapper-{{ section.id }}-{{ product.id }}{% endcapture %}
           {%- assign preview_image = product.featured_media.preview_image -%}

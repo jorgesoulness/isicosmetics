@@ -2628,35 +2628,37 @@ theme.Helpers = (function() {
   /* Based on the prepareTransition by Jonathan Snook */
   /* Jonathan Snook - MIT License - https://github.com/snookca/prepareTransition */
   function prepareTransition(element) {
-    element.addEventListener(
-      'transitionend',
-      function(event) {
-        event.currentTarget.classList.remove('is-transitioning');
-      },
-      { once: true }
-    );
+    if(element) {
+      element.addEventListener(
+        'transitionend',
+        function(event) {
+          event.currentTarget.classList.remove('is-transitioning');
+        },
+        { once: true }
+      );
 
-    var properties = [
-      'transition-duration',
-      '-moz-transition-duration',
-      '-webkit-transition-duration',
-      '-o-transition-duration'
-    ];
+      var properties = [
+        'transition-duration',
+        '-moz-transition-duration',
+        '-webkit-transition-duration',
+        '-o-transition-duration'
+      ];
 
-    var duration = 0;
+      var duration = 0;
 
-    properties.forEach(function(property) {
-      var computedValue = getComputedStyle(element)[property];
+      properties.forEach(function(property) {
+        var computedValue = getComputedStyle(element)[property];
 
-      if (computedValue) {
-        computedValue.replace(/\D/g, '');
-        duration || (duration = parseFloat(computedValue));
+        if (computedValue) {
+          computedValue.replace(/\D/g, '');
+          duration || (duration = parseFloat(computedValue));
+        }
+      });
+
+      if (duration !== 0) {
+        element.classList.add('is-transitioning');
+        element.offsetWidth;
       }
-    });
-
-    if (duration !== 0) {
-      element.classList.add('is-transitioning');
-      element.offsetWidth;
     }
   }
 
@@ -2856,28 +2858,28 @@ theme.Header = (function() {
   var cache = {};
 
   function init() {
-    // cacheSelectors();
+    cacheSelectors();
     styleDropdowns(document.querySelectorAll(selectors.siteNavHasDropdown));
     positionFullWidthDropdowns();
 
-    // cache.parents.forEach(function(element) {
-    //   element.addEventListener('click', submenuParentClickHandler);
-    // });
+    /*cache.parents.forEach(function(element) {
+      element.addEventListener('click', submenuParentClickHandler);
+    });*/
 
     // check when we're leaving a dropdown and close the active dropdown
-    // cache.siteNavChildLink.forEach(function(element) {
-    //   element.addEventListener('focusout', submenuFocusoutHandler);
-    // });
+    cache.siteNavChildLink.forEach(function(element) {
+      element.addEventListener('focusout', submenuFocusoutHandler);
+    });
 
-    // cache.topLevel.forEach(function(element) {
-    //   element.addEventListener('focus', hideDropdown);
-    // });
+    cache.topLevel.forEach(function(element) {
+      element.addEventListener('focus', hideDropdown);
+    });
 
-    // cache.subMenuLinks.forEach(function(element) {
-    //   element.addEventListener('click', stopImmediatePropagation);
-    // });
+    cache.subMenuLinks.forEach(function(element) {
+      element.addEventListener('click', stopImmediatePropagation);
+    });
 
-    // window.addEventListener('resize', resizeHandler);
+    window.addEventListener('resize', resizeHandler);
   }
 
   function stopImmediatePropagation(event) {
@@ -2890,7 +2892,7 @@ theme.Header = (function() {
     cache = {
       nav: navigation,
       topLevel: document.querySelectorAll(selectors.siteNavLinkMain),
-      parents: navigation.querySelectorAll(selectors.siteNavHasDropdown),
+      // parents: navigation.querySelectorAll(selectors.siteNavHasDropdown),
       subMenuLinks: document.querySelectorAll(selectors.siteNavChildLinks),
       activeDropdown: document.querySelector(selectors.siteNavActiveDropdown),
       siteHeader: document.querySelector(selectors.siteHeader),
@@ -3136,8 +3138,8 @@ theme.MobileNav = (function() {
 
   function closeMobileNav() {
     theme.Helpers.prepareTransition(cache.mobileNavContainer);
-    cache.mobileNavContainer.classList.remove(classes.navOpen);
-    cache.mobileNavContainer.style.transform = 'translateY(-100%)';
+    // cache.mobileNavContainer.classList.remove(classes.navOpen);
+    // cache.mobileNavContainer.style.transform = 'translateY(-100%)';
     cache.pageContainer.setAttribute('style', '');
 
     slate.a11y.trapFocus({
@@ -3145,19 +3147,21 @@ theme.MobileNav = (function() {
       elementToFocus: document.body
     });
 
-    cache.mobileNavContainer.addEventListener(
-      'transitionend',
-      mobileNavRemoveTrapFocus,
-      { once: true }
-    );
+    if(cache.mobileNavContainer) {
+      cache.mobileNavContainer.addEventListener(
+        'transitionend',
+        mobileNavRemoveTrapFocus,
+        { once: true }
+      );
+      cache.mobileNavToggle.classList.add(classes.mobileNavOpenIcon);
+      cache.mobileNavToggle.classList.remove(classes.mobileNavCloseIcon);
+      cache.mobileNavToggle.setAttribute('aria-expanded', false);
+      cache.mobileNavToggle.focus();
+  
+      window.removeEventListener('keyup', keyUpHandler);
+      window.scrollTo(0, 0);
+    }
 
-    cache.mobileNavToggle.classList.add(classes.mobileNavOpenIcon);
-    cache.mobileNavToggle.classList.remove(classes.mobileNavCloseIcon);
-    cache.mobileNavToggle.setAttribute('aria-expanded', false);
-    cache.mobileNavToggle.focus();
-
-    window.removeEventListener('keyup', keyUpHandler);
-    window.scrollTo(0, 0);
   }
 
   function mobileNavRemoveTrapFocus() {

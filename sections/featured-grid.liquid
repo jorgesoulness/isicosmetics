@@ -3,14 +3,59 @@
     <div class="container">
       <div class="columns">
         <div class="column is-full">
-
-          <div class="gridFeatured">
-            <figure class="figPromoHome">hola</figure>
-            <figure class="figPromoHome">hola</figure>
-            <figure class="figPromoHome">hola</figure>
-            <figure class="figPromoHome">hola</figure>
+          <div class="dividerFeatured">
+            <span></span>
           </div>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column is-full">
+{%- if section.blocks.size > 0 -%}
+          <div class="gridFeatured">
+{% for block in section.blocks %}
+            <figure class="figPromoHome">
+            {% if block.settings.image != blank %}
+              {% capture img_id %}gridImageBox-{{ section.id }}{% endcapture %}
+              {% capture wrapper_id %}gridImageBoxWr-{{ section.id }}{% endcapture %}
+              {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+              <div id="{{ wrapper_id }}" class="figPromoHome__img js" data-image-loading-animatio>
+                <img id="{{ img_id }}"
+                  class="feature-row__image lazyload"
+                  data-src="{{ img_url }}"
+                  data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                  data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+                  data-sizes="auto"
+                  alt="{{ block.settings.image.alt | escape }}">
+              </div>
+              <noscript>
+                {{ block.settings.image | img_url: '600x600', scale: 2 | img_tag: block.settings.image.alt, 'feature-row__image' }}
+              </noscript>
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+            {%- unless block.settings.subheading == blank -%}
+              <figcaption class="figPromoHome__cap colorTextBox" style="color: {{ block.settings.color_text }};">
+                {{ block.settings.subheading }}
+              </figcaption>
+            {%- endunless -%}
+              <div class="overlayBoxPromo"></div>
+            {%- assign show_link_button = false -%}
+            {%- if block.settings.button_link != blank -%}
+              {%- assign show_link_button = true -%}
+            {%- endif -%}
+            {%- if show_link_buttonk -%}
+              <a href="{{ block.settings.button_link }}" class="btnOverGrid"></a>
+            {%- endif -%}
+            </figure>
+{%- endfor -%}
+          </div>
+{%- endif -%}
 
+{% if section.blocks.size == 0 %}
+  <div class="placeholder-noblocks">
+    {{ 'homepage.onboarding.no_content' | t }}
+  </div>
+{% endif %}
         </div><!-- end.fullColumn -->
       </div><!-- end.columns -->
     </div><!-- end.container -->
@@ -67,6 +112,15 @@
           }
         },
         {
+          "type": "color",
+          "id": "color_text",
+          "label": {
+            "en": "Text",
+            "es": "Texto"
+          },
+          "default": "#FDF8F7"
+        },
+        {
           "type": "url",
           "id": "button_link",
           "label": {
@@ -88,6 +142,12 @@
         "es": "Imagen"
       },
       "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
         {
           "type": "image"
         },

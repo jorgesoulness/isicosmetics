@@ -139,6 +139,9 @@
     }
     & button {
       width: 30%; margin-top: 10px;
+      &:hover {
+        background-color: $col5!important; color: $white!important;
+      }
     }
   }
   & h3 {

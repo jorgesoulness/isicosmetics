@@ -61,9 +61,9 @@
             <button type="button" class="controlsHead__link controlsHead__link--users js-drawer-open-top" data-predictive-search-open-drawer>{% include 'icon-search' %}</button>
           </li>
           <li class="controlsHead__item">
-            <a class="controlsHead__link controlsHead__link--carrito{% if cart.item_count == 0 %} hideCount{% endif %}" href="{{ routes.cart_url }}">
+            <a class="controlsHead__link controlsHead__link--carrito{% if cart.item_count == 0 %} hideCount{% endif %}" href="{{ routes.cart_url }}" data-cart-count-bubble>
               {% include 'icon-cart' %}
-              <span>{{ cart.item_count }}</span>
+              <span data-cart-count>{{ cart.item_count }}</span>
             </a>
           </li>
       {% unless linklists[section.settings.main_linklist] == blank %}

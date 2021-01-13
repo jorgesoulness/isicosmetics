@@ -8,7 +8,7 @@
           "main_linklist": "main-menu",
           "message": true,
           "home_page_only": false,
-          "message_text": "Anuncia algo aquí",
+          "message_text": "ENVÍO GRATIS EN COMPRAS MINIMO DE $999 MXN",
           "color_bg": "#3a3a3a",
           "color_text": "#ffffff"
         }
@@ -176,31 +176,28 @@
           "show_payment_icons": true
         }
       },
-      "160818536364f1b71e": {
-        "type": "feature-row",
-        "settings": {
-          "layout": "left",
-          "title": "Imagen con texto",
-          "text": "<p>Vincula un texto largo con una imagen para dar visibilidad a tu producto, colección o artículo de blog seleccionados. Agrega detalles sobre disponibilidad, estilo, o incluso ofrece una reseña.<\/p>",
-          "button_label": ""
-        }
-      },
       "16082742227593e51f": {
         "type": "hero-slider",
         "blocks": {
           "16082742227593e51f-0": {
             "type": "image",
             "settings": {
+              "image": "shopify:\/\/shop_images\/Captura_de_Pantalla_2020-12-21_a_la_s_22.50.31.jpg",
+              "text_alignment": "left-slide",
               "slide_title": "Diapositiva de imagen",
-              "subheading": "<p>Usa este texto para compartir información sobre tu marca con tus clientes. Describe un producto, comparte anuncios o recibe clientes en tu tienda.<\/p>",
-              "button_label": ""
+              "subheading": "<p>Lorem ipums <strong>texto <\/strong>del slider<\/p>",
+              "color_text": "#131617",
+              "button_label": "Ir a Contacto"
             }
           },
           "16082742227593e51f-1": {
             "type": "image",
             "settings": {
+              "image": "shopify:\/\/shop_images\/Captura_de_Pantalla_2020-12-21_a_la_s_22.53.36.jpg",
+              "text_alignment": "right-slide",
               "slide_title": "Diapositiva de imagen",
               "subheading": "<p>Usa este texto para compartir información sobre tu marca con tus clientes. Describe un producto, comparte anuncios o recibe clientes en tu tienda.<\/p>",
+              "color_text": "#131617",
               "button_label": ""
             }
           }
@@ -210,17 +207,101 @@
           "16082742227593e51f-1"
         ],
         "settings": {
-          "text_alignment": "center-slide",
           "show_overlay": true,
-          "autorotate": false,
+          "autorotate": true,
           "autorotate_speed": 5
+        }
+      },
+      "16086174119fa2b077": {
+        "type": "featured-grid",
+        "blocks": {
+          "16086174119fa2b077-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/pexels-marcelo-moreira-1926620.jpg",
+              "subheading": "<p>MÓDELO<br\/><strong>COSMETIC<\/strong><\/p>",
+              "color_text": "#ffffff"
+            }
+          },
+          "16086174119fa2b077-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/pexels-kinkate-208052.jpg",
+              "subheading": "<p>MÓDELO<br\/><strong>COSMETIC<\/strong><\/p>",
+              "color_text": "#131617"
+            }
+          },
+          "4b8c298b-d1eb-48d8-a3d9-ec7f67a2f18f": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/pexels-pixabay-354962.jpg",
+              "subheading": "<p>MÓDELO<br\/><strong>COSMETIC<\/strong><\/p>",
+              "color_text": "#fdf8f7"
+            }
+          },
+          "c06ae1f5-9e5c-48ea-8f6d-fea37a3f0bad": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/pexels-pixabay-301367.jpg",
+              "subheading": "<p>MÓDELO<br\/><strong>COSMETIC<\/strong><\/p>",
+              "color_text": "#131617"
+            }
+          }
+        },
+        "block_order": [
+          "16086174119fa2b077-0",
+          "16086174119fa2b077-1",
+          "4b8c298b-d1eb-48d8-a3d9-ec7f67a2f18f",
+          "c06ae1f5-9e5c-48ea-8f6d-fea37a3f0bad"
+        ],
+        "settings": {
+          "title": "Grid Promocional"
+        }
+      },
+      "16092140143dedc048": {
+        "type": "feature-image",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/pexels-anderson-guerra-1115128.jpg",
+          "layout": "left",
+          "text": "<p><strong>SUSCRÍBETE <\/strong>Y NO DEJES<br\/>DE RECIBIR PROMOCIONES<br\/><em>MENSUALES<\/em><\/p>",
+          "button_label": "Ver productos",
+          "button_link": "shopify:\/\/collections\/all"
+        }
+      },
+      "16092877935bcd3bad": {
+        "type": "collection-slide",
+        "settings": {
+          "title": "Mejores ventas",
+          "collection": "mejores-ventas",
+          "show_view_all": false
+        }
+      },
+      "product-template": {
+        "type": "product-template",
+        "settings": {
+          "show_quantity_selector": true,
+          "show_vendor": false,
+          "enable_payment_button": true,
+          "show_share_buttons": true,
+          "media_size": "medium",
+          "enable_image_zoom": true,
+          "enable_video_looping": false
+        }
+      },
+      "product-recommendations": {
+        "type": "product-recommendations",
+        "settings": {
+          "show_product_recommendations": true,
+          "heading": "También te puede interesar",
+          "show_vendor": false
         }
       }
     },
     "content_for_index": [
       "16082742227593e51f",
-      "160818536364f1b71e",
-      "collection"
+      "16086174119fa2b077",
+      "16092140143dedc048",
+      "16092877935bcd3bad"
     ]
   },
   "presets": {
