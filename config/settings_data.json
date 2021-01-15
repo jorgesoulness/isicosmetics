@@ -295,6 +295,17 @@
           "heading": "También te puede interesar",
           "show_vendor": false
         }
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "settings": {
+          "layout": "grid",
+          "grid": 2,
+          "rows": 2,
+          "show_collection_image": true,
+          "show_vendor": false,
+          "sort_enable": true
+        }
       }
     },
     "content_for_index": [
