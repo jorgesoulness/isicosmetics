@@ -122,3 +122,25 @@
     bottom: 11px; width: 15px; @include transform(rotate(0deg));
   }
 }
+
+// Buscador
+.search-bar {
+  &__interior {
+    background-color: $white;
+  }
+  &__submit {
+    z-index: 1; position: absolute!important; top: 0!important; right: 0!important; display: inline-block!important; padding: 0 12px; height: 100%!important; line-height: inherit!important; vertical-align: middle; background-color: $col6; border: 0; margin: 0; color: $white!important; outline: 0!important;
+  }
+  &__input {
+    border: 1px solid $col3!important; border-radius: 0!important; background-color: $col3!important; color: $c5!important; outline: 0!important;
+    &:focus {
+      border-color: $col2!important; background-color: $white!important;
+    }
+    @include placeholder {
+      color: $col6!important;
+    }
+  }
+  &__close {
+    outline: 0!important;
+  }
+}

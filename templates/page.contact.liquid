@@ -24,7 +24,7 @@
             <div class="field-body">
               <div class="field is-expanded">
                 <div class="animatedField">
-                  <input type="text" id="{{ formId }}-name" name="contact[{{ 'contact.form.name' | t }}]" value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+                  <input type="text" id="{{ formId }}-name" name="contact[{{ 'contact.form.name' | t }}]" value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}" required>
                   <label for="{{ formId }}-name">Nombre completo*</label>
                 </div>
               </div>
@@ -44,6 +44,7 @@
                     autocapitalize="off"
                     value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
                     aria-required="true"
+                    required
                     {%- if form.errors contains 'email' -%}
                       class="input--error"
                       aria-invalid="true"
@@ -64,7 +65,7 @@
               <div class="field">
                 <div class="control is-expanded">
                   <div class="animatedField">
-                    <input type="tel" id="{{ formId }}-phone" name="contact[{{ 'contact.form.phone' | t }}]" pattern="[0-9\-]*" value="{% if form[phone] %}{{ form[phone] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+                    <input type="tel" id="{{ formId }}-phone" name="contact[{{ 'contact.form.phone' | t }}]" pattern="[0-9\-]*" value="{% if form[phone] %}{{ form[phone] }}{% elsif customer %}{{ customer.phone }}{% endif %}" required>
                     <label for="{{ formId }}-phone">Teléfono:</label>
                   </div>
                 </div>
@@ -76,7 +77,10 @@
             <div class="field-body">
               <div class="field is-expanded">
                 <div class="control">
-                  <textarea rows="10" class="textarea" id="{{ formId }}-message" name="contact[{{ 'contact.form.message' | t }}]">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+                  <div class="animatedTextArea">
+                    <textarea rows="5" id="{{ formId }}-message" name="contact[{{ 'contact.form.message' | t }}]" required>{% if form.body %}{{ form.body }}{% endif %}</textarea>
+                    <label for="{{ formId }}-message">Mensaje:</label>
+                  </div>
                 </div>
               </div>
             </div>
@@ -86,9 +90,17 @@
               <div class="field">
                 <div class="control">
                   <div class="checkCustom">
-                    checkbox
+                    <input
+                      type="checkbox"
+                      class="CheckStyle"
+                      id="{{ formId }}-acepto"
+                      name="contact[acepto]"
+                      aria-required="true"
+                      value="Acepto"
+                    >
+                    <label for="{{ formId }}-acepto">He leído y acepto el <a href="">Aviso de Privacidad</a></label>
                   </div>
-                  <input type="submit" class="btn" value="{{ 'contact.form.submit' | t }}">
+                  <button type="submit" value="{{ 'contact.form.submit' | t }}" class="btnpr btnpr__primary btnpr__primary--border"><span>Enviar</span><i class="lni lni-chevron-right"></i></button>
                 </div>
               </div>
             </div>

@@ -1,72 +1,117 @@
-<div class="page-width">
-  <div class="grid">
-    <div class="grid__item medium-up--one-half medium-up--push-one-quarter">
+<section class="contactSection">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="collectionHeader">
+          <div class="collectionHeader__title">
+            <h1>{{ 'customer.register.title' | t }}</h1>
+          </div><!-- end.TitleDescription -->
+        </div><!-- end.collectionHeader -->
+      </div><!-- end.column -->
+    </div><!--  end.columns -->
+    <div class="columns is-centered">
+      <div class="column is-full-fifths-tablet is-half-desktop">
+        <div class="contformulario">
+      {%- assign formId = 'RegisterForm' -%}
+      {% form 'create_customer', id: formId, novalidate: 'novalidate' %}
+        {% include 'form-status', form: form, form_id: formId %}
 
-      <div class="form-vertical">
+          <div class="field is-horizontal">
+            <div class="field-body">
+              <div class="field is-expanded">
+                <div class="animatedField">
+                  <input type="text" name="customer[first_name]" id="{{ formId }}-FirstName" {% if form.first_name %}value="{{ form.first_name }}"{% endif %} autocomplete="given-name" required>
+                  <label for="{{ formId }}-FirstName">Nombre*</label>
+                </div>
+              </div>
+            </div>
+          </div><!-- end.nameInput -->
+          <div class="field is-horizontal">
+            <div class="field-body">
+              <div class="field is-expanded">
+                <div class="animatedField">
+                  <input type="text" name="customer[last_name]" id="{{ formId }}-LastName" {% if form.last_name %}value="{{ form.last_name }}"{% endif %} autocomplete="family-name" required>
+                  <label for="{{ formId }}-LastName">Apellido*</label>
+                </div>
+              </div>
+            </div>
+          </div><!-- end.lastNameInput -->
+          <div class="field is-horizontal">
+            <div class="field-body">
+              <div class="field is-expanded">
+                <div class="animatedField">
+                  <input
+                    type="email"
+                    name="customer[email]"
+                    id="{{ formId }}-email"
+                    class="{% if form.errors contains 'email' %} input--error{% endif %}"
+                    {% if form.email %} value="{{ form.email }}"{% endif %}
+                    autocorrect="off"
+                    autocapitalize="off"
+                    autocomplete="email"
+                    aria-required="true"
+                    {%- if form.errors contains 'email' -%}
+                      class="input--error"
+                      aria-invalid="true"
+                      aria-describedby="{{ formId }}-email-error"
+                    {%- endif -%}
+                    required
+                  >
+                  <label for="{{ formId }}-email">Correo electrónico*</label>
+                </div>
+                {%- if form.errors contains 'email' -%}
+                  <span id="{{ formId }}-email-error" class="input-error-message">
+                    <span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
+                    {% include 'icon-error' %}
+                    <span>{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.</span>
+                  </span>
+                {%- endif -%}
+              </div>
+            </div>
+          </div><!-- end.emailInput -->
+          <div class="field is-horizontal">
+            <div class="field-body">
+              <div class="field is-expanded">
+                <div class="animatedField">
+                  <input
+                    type="password"
+                    name="customer[password]"
+                    id="{{ formId }}-password"
+                    class="{% if form.errors contains 'password' %} input--error{% endif %}"
+                    aria-required="true"
+                    {%- if form.errors contains 'password' -%}
+                      class="input--error"
+                      aria-invalid="true"
+                      aria-describedby="{{ formId }}-password-error"
+                    {%- endif -%}
+                    required
+                  >
+                  <label for="{{ formId }}-password">Contraseña*</label>
+                </div>
+                {%- if form.errors contains 'password' -%}
+                  <span id="{{ formId}}-password-error" class="input-error-message">
+                    {% include 'icon-error' %}
+                    <span>{{ form.errors.translated_fields['password'] | capitalize }} {{ form.errors.messages['password'] }}.</span>
+                  </span>
+                {%- endif -%}
+              </div>
+            </div>
+          </div><!-- end.passwordInput -->
 
-        <h1 class="text-center">{{ 'customer.register.title' | t }}</h1>
-
-        {%- assign formId = 'RegisterForm' -%}
-        {% form 'create_customer', id: formId, novalidate: 'novalidate' %}
-          {% include 'form-status', form: form, form_id: formId %}
-
-          <label for="{{ formId }}-FirstName">{{ 'customer.register.first_name' | t }}</label>
-          <input type="text" name="customer[first_name]" id="{{ formId }}-FirstName" {% if form.first_name %}value="{{ form.first_name }}"{% endif %} autocomplete="given-name">
-
-          <label for="{{ formId }}-LastName">{{ 'customer.register.last_name' | t }}</label>
-          <input type="text" name="customer[last_name]" id="{{ formId }}-LastName" {% if form.last_name %}value="{{ form.last_name }}"{% endif %} autocomplete="family-name">
-
-          <label for="{{ formId }}-email">{{ 'customer.register.email' | t }}</label>
-          <input
-            type="email"
-            name="customer[email]"
-            id="{{ formId }}-email"
-            class="{% if form.errors contains 'email' %} input--error{% endif %}"
-            {% if form.email %} value="{{ form.email }}"{% endif %}
-            autocorrect="off"
-            autocapitalize="off"
-            autocomplete="email"
-            aria-required="true"
-            {%- if form.errors contains 'email' -%}
-              class="input--error"
-              aria-invalid="true"
-              aria-describedby="{{ formId }}-email-error"
-            {%- endif -%}
-          >
-          {%- if form.errors contains 'email' -%}
-            <span id="{{ formId }}-email-error" class="input-error-message">
-              <span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
-              {% include 'icon-error' %}
-              <span>{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.</span>
-            </span>
-          {%- endif -%}
-
-          <label for="{{ formId }}-password">{{ 'customer.register.password' | t }}</label>
-          <input
-            type="password"
-            name="customer[password]"
-            id="{{ formId }}-password"
-            class="{% if form.errors contains 'password' %} input--error{% endif %}"
-            aria-required="true"
-            {%- if form.errors contains 'password' -%}
-              class="input--error"
-              aria-invalid="true"
-              aria-describedby="{{ formId }}-password-error"
-            {%- endif -%}
-          >
-          {%- if form.errors contains 'password' -%}
-            <span id="{{ formId}}-password-error" class="input-error-message">
-              {% include 'icon-error' %}
-              <span>{{ form.errors.translated_fields['password'] | capitalize }} {{ form.errors.messages['password'] }}.</span>
-            </span>
-          {%- endif -%}
-
-          <p class="text-center">
-            <input type="submit" value="{{ 'customer.register.submit' | t }}" class="btn">
-          </p>
-
-        {% endform %}
-      </div>
-    </div>
-  </div>
-</div>
+          <div class="field is-horizontal">
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <div class="fieldsLogin text-center">        
+                    <button type="submit" value="{{ 'customer.register.submit' | t }}" class="btnpr btnpr__primary btnpr__primary--border"><span>{{ 'customer.register.submit' | t }}</span><i class="lni lni-chevron-right"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><!-- end.fieldsLogin -->
+      {% endform %}
+        </div><!-- end.contactSec -->
+      </div><!-- end.column -->
+    </div><!--  end.columns -->
+  </div><!-- end.container -->
+</section>

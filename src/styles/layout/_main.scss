@@ -80,7 +80,7 @@ article {
   &__title {
     width: 100%; height: auto; padding: 0; margin: 0 0 30px;
     & h1 {
-      @include fluid-type(16px, 28px, 320px, 1216px); margin: 0 0 20px; padding: 0; text-align: center; text-transform: uppercase; color: $c5;
+      @include fluid-type(16px, 28px, 320px, 1216px); margin: 0 0 20px; padding: 0; text-align: center; text-transform: uppercase; color: $c5; outline: 0!important;
     }
     & .rte {
       text-align: center; @include fluid-type(13px, 16px, 320px, 1216px);
@@ -106,5 +106,67 @@ article {
   }
   @media all and (min-width: 750px) {
     padding: 50px 0 0;
+  }
+}
+
+// ContactForm Section
+.contactSection {
+  width: 100%; height: auto; padding: 0; margin: 0 0 60px; position: relative; @include box-sizing(border-box);
+  & .contformulario {
+    width: 100%; height: auto; padding: 0; margin: 0; position: relative; @include box-sizing(border-box);
+    & .checkCustom {
+      width: 100%; height: auto; padding: 0; margin: 0 0 20px; position: relative; @include box-sizing(border-box); text-align: center;
+    }
+    & .btnpr {
+      width: 220px; display: block; margin: 0 auto;
+    }
+  }
+  & .fieldsLogin {
+    width: 100%; height: auto; padding: 0; margin: 20px 0 0; position: relative;
+    & .textRecover {
+      margin-bottom: 15px; @include fluid-type(12px, 14px, 320px, 1216px);
+      & a {
+        color: $c5!important; text-decoration: underline; @include transition(all 300ms);
+        &:hover {
+          color: $col6!important;
+        }
+      }
+    }
+    & .btnpr {
+      margin-bottom: 15px;
+    }
+    & .textCreate {
+      margin-bottom: 0; @include fluid-type(13px, 14px, 320px, 1216px);
+      & a {
+        color: $c5!important; text-decoration: underline; @include transition(all 300ms);
+        &:hover {
+          color: $col6!important;
+        }
+      }
+    }
+  }
+}
+.pageGeneric {
+  width: 100%; height: auto; padding: 60px 0 0; margin: 0 0 60px; position: relative; @include box-sizing(border-box);
+  & .sectionHeader {
+    & .titleSectionGen {
+      @include fluid-type(18px, 28px, 320px, 1216px); margin-bottom: 25px; padding: 0; text-transform: uppercase;
+    }
+  }
+  & .rte {
+    margin-bottom: 0!important; color: $c5!important; @include fluid-type(14px, 16px, 320px, 1216px);
+    & strong,
+    & b {
+      font-family: $monsemi!important;
+    }
+    & a {
+      font-family: $monsemi!important; color: $col6!important;
+    }
+  }
+  & .collectionHeader {
+    padding: 0;
+  }
+  & .formContFlex {
+    margin: 0 auto;
   }
 }
