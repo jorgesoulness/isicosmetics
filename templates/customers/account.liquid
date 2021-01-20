@@ -1,57 +1,77 @@
-<div class="page-width">
-  <div class="section-header text-center">
-    <h1>{{ 'customer.account.title' | t }}</h1>
-    {{ 'layout.customer.log_out' | t | customer_logout_link }}
-  </div>
+<section class="contactSection">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="collectionHeader">
+          <div class="collectionHeader__title">
+            <h1>{{ 'customer.account.title' | t }}</h1>
+            <div class="rte">
+              {{ 'layout.customer.log_out' | t | customer_logout_link }}
+            </div>
+          </div><!-- end.TitleDescription -->
+        </div><!-- end.collectionHeader -->
+      </div><!-- end.column -->
+    </div><!--  end.columns -->
+  </div><!-- end.container -->
+  <div class="contAccount">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-full is-three-fifths-tablet is-two-thirds-desktop">
+          <div class="boxMyAccount">
+            <h2>{{ 'customer.orders.title' | t }}</h2>
+            {% paginate customer.orders by 20 %}
+              {% if customer.orders.size != 0 %}
 
-  <div class="grid myaccount">
-    <div class="grid__item myaccount__order-history">
-      <h2>{{ 'customer.orders.title' | t }}</h2>
+                <table class="table is-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">{{ 'customer.orders.order_number' | t }}</th>
+                      <th scope="col">{{ 'customer.orders.date' | t }}</th>
+                      <th scope="col">{{ 'customer.orders.payment_status' | t }}</th>
+                      <th scope="col">{{ 'customer.orders.fulfillment_status' | t }}</th>
+                      <th scope="col">{{ 'customer.orders.total' | t }}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for order in customer.orders %}
+                      <tr>
+                        <th data-label="{{ 'customer.orders.order_number' | t }}" scope="row">
+                          <a href="{{ order.customer_url }}" class="btn btn--secondary btn--small" aria-label="{{ 'customer.orders.order_number_link' | t: number: order.name }}">{{ order.name }}</a>
+                        </th>
+                        <td data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | time_tag: format: 'date' }}</td>
+                        <td data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}</td>
+                        <td data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
+                        <td data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money }}</td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
 
-      {% paginate customer.orders by 20 %}
-        {% if customer.orders.size != 0 %}
+              {% else %}
 
-          <table class="responsive-table">
-            <thead>
-              <tr>
-                <th scope="col">{{ 'customer.orders.order_number' | t }}</th>
-                <th scope="col">{{ 'customer.orders.date' | t }}</th>
-                <th scope="col">{{ 'customer.orders.payment_status' | t }}</th>
-                <th scope="col">{{ 'customer.orders.fulfillment_status' | t }}</th>
-                <th scope="col">{{ 'customer.orders.total' | t }}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for order in customer.orders %}
-                <tr>
-                  <th data-label="{{ 'customer.orders.order_number' | t }}" scope="row">
-                    <a href="{{ order.customer_url }}" class="btn btn--secondary btn--small" aria-label="{{ 'customer.orders.order_number_link' | t: number: order.name }}">{{ order.name }}</a>
-                  </th>
-                  <td data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | time_tag: format: 'date' }}</td>
-                  <td data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}</td>
-                  <td data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
-                  <td data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money }}</td>
-                </tr>
-              {% endfor %}
-            </tbody>
-          </table>
+                <p>{{ 'customer.orders.none' | t }}</p>
 
-        {% else %}
-
-          <p>{{ 'customer.orders.none' | t }}</p>
-
-        {% endif %}
-        {%- if paginate.pages > 1 -%}
-          {% include 'pagination', paginate: paginate %}
-        {%- endif -%}
-      {% endpaginate %}
+              {% endif %}
+              {%- if paginate.pages > 1 -%}
+                <div class="columns">
+                  <div class="column is-full">
+                    {% include 'pagination', paginate: paginate %}
+                  </div>
+                </div>
+              {%- endif -%}
+            {% endpaginate %}
+          </div>
+        </div><!-- end.column -->
+        <div class="column">
+          <div class="boxAccountDetails">
+            <h2>{{ 'customer.account.details' | t }}</h2>
+            {{ customer.default_address | format_address }}
+            <div>
+              <a href="{{ routes.account_addresses_url }}" class="btnpr btnpr__primary btnpr__primary--border"><span>{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</span><i class="lni lni-chevron-right"></i></a>
+            </p>
+          </div>
+        </div><!-- end.column -->
+      </div><!--  end.columns -->
     </div>
-    <div class="grid__item myaccount__account-details">
-      <h2>{{ 'customer.account.details' | t }}</h2>
-
-      {{ customer.default_address | format_address }}
-
-      <p><a href="{{ routes.account_addresses_url }}" class="btn btn--small">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a></p>
-    </div>
   </div>
-</div>
+</section><!-- end.SectionAccount -->

@@ -339,3 +339,164 @@
     color: $c5; font-size: 14px!important; font-family: $monsemi!important; margin: 0 10px; padding: 0;
   }
 }
+
+// My Account box
+.boxMyAccount {
+  width: 100%; height: auto; padding: 0; margin: 0 0 10px; position: relative; @include box-sizing(border-box);
+  & h2 {
+    @include fluid-type(16px, 22px, 320px, 1216px); margin: 0 0 15px; padding: 0; text-align: left; text-transform: uppercase; color: $c5; outline: 0!important; font-family: $monsemi!important;
+  }
+}
+.boxAccountDetails {
+  width: 100%; height: auto; padding: 10px; margin: 0 0 10px; position: relative; @include box-sizing(border-box); box-shadow: 0 0 10px rgba($black, 0.15);
+  & h2 {
+    @include fluid-type(16px, 22px, 320px, 1216px); margin: 0 0 15px; padding: 0; text-align: left; text-transform: uppercase; color: $c5; outline: 0!important; font-family: $monsemi!important;
+  }
+  & p {
+    @include fluid-type(13px, 15px, 320px, 1216px); color: $c5!important; margin: 0 0 10px;
+  }
+  & .btnpr {
+    margin: 0;
+  }
+}
+.boxFormAdressEdit {
+  width: 100%; height: auto; padding: 10px; margin: 0 0 30px; position: relative; @include box-sizing(border-box); box-shadow: 0 0 10px rgba($black, 0.15);
+  & h2 {
+    @include fluid-type(16px, 22px, 320px, 1216px); margin: 0 0 15px; padding: 0; text-align: center; text-transform: uppercase; color: $c5; outline: 0!important; font-family: $monsemi!important;
+  }
+  & .descAddress {
+    width: 100%; height: auto; padding: 0; margin: 0 0 10px; position: relative; @include box-sizing(border-box);
+    & p {
+      text-align: center; @include fluid-type(13px, 15px, 320px, 1216px); color: $c5!important; margin: 0;
+      & a {
+        color: $col6!important; @include transition(all 300ms ease);
+        &:hover {
+          color: $col4!important;
+        }
+      }
+    }
+  }
+  & .buttonsEditAdd {
+    width: 100%; height: auto; padding: 0; margin: 0; position: relative; @include box-sizing(border-box); text-align: center;
+    & .btnpr {
+      margin: 0 6px 0; height: 40px!important; line-height: 38px!important; padding: 0 20px!important; font-size: rem(11px)!important; width: 100px!important; display: inline-block;
+      &:last-child {
+        margin: 0;
+      }
+      & i {
+        width: 15px; font-size: 11px;
+      }
+    }
+  }
+}
+.formEditAdress {
+  width: 100%; height: auto; padding: 0; margin: 0; position: relative; @include box-sizing(border-box);
+  & h3 {
+    @include fluid-type(14px, 17px, 320px, 1216px); margin: 0 0 15px; padding: 0; text-align: left; text-transform: uppercase; color: $c5; outline: 0!important; font-family: $monsemi!important;
+  }
+  & hr {
+     margin: 20px 0 30px; border-bottom: 1px solid $c2;
+  }
+  & .fieldCheck  {
+    margin-bottom: 10px;
+  }
+  & .buttonsForms {
+    width: 100%; height: auto; padding: 0; margin: 0; position: relative; @include box-sizing(border-box); text-align: center;
+    & .btnpr {
+      margin: 0 0 10px; height: 40px!important; line-height: 38px!important; padding: 0 20px!important; font-size: rem(11px)!important; width: 200px!important; display: inline-block;
+      &:last-child {
+        margin: 0; width: 110px!important;
+      }
+      & i {
+        width: 15px; font-size: 11px;
+      }
+    }
+  }
+  @media all and (min-width: 347px) {
+    & .buttonsForms {
+      & .btnpr {
+        margin: 0 6px 0;
+        &:last-child {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+// Box Error page 404
+.boxError {
+  width: 100%; height: auto; padding: 0; margin: 0; position: relative; @include box-sizing(border-box);
+  & h1 {
+    @include fluid-type(20px, 40px, 320px, 1216px); margin: 0 0 20px; padding: 0; text-align: center; text-transform: uppercase; color: $c5; outline: 0!important;
+  }
+  & p {
+    text-align: center; @include fluid-type(14px, 18px, 320px, 1216px); color: $c5!important; margin: 0 0 15px;
+  }
+  & .btnpr {
+    width: 250px!important;
+  }
+}
+
+// Box Cart Template Section
+.boxFormCart {
+  width: 100%; height: auto; padding: 0; margin: 0; position: relative; @include box-sizing(border-box);
+  & table {
+    & th {
+      border: 1px solid $c3; border-width: 0 0 2px; font-family: $monmedium!important; color: $c4; @include fluid-type(16px, 20px, 320px, 1216px);
+    }
+    & td {
+      border: 1px solid $c2; border-width: 0 0 1px; color: $black; @include fluid-type(14px, 20px, 320px, 1216px);
+    }
+  }
+  & .buttonsFormsCart {
+    @include displayFlex(flex, column, center, center, wrap);
+    & .btnpr {
+      width: 200px!important; margin: 0 0 10px; height: 40px!important; line-height: 40px!important; padding: 0 20px!important; font-size: rem(13px)!important;
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+  & .cart-subtotal {
+    &__title {
+      color: $c5; @include fluid-type(14px, 20px, 320px, 1216px); font-family: $monmedium!important;
+    }
+    &__price {
+      color: $c4; @include fluid-type(14px, 20px, 320px, 1216px); font-family: $monmedium!important;
+    }
+  }
+  & .cart__shipping {
+    color: $c4; @include fluid-type(12px, 16px, 320px, 1216px);
+  }
+  @media all and (min-width: 347px) {
+    & .buttonsFormsCart {
+      & .btnpr {
+        width: 220px!important;
+      }
+    }
+  }
+  @media all and (min-width: 750px) {
+    & .buttonsFormsCart {
+      @include displayFlex(flex, row, flex-end, center, wrap);
+      & .btnpr {
+        margin: 0 6px 0; height: 46px!important; line-height: 46px!important; padding: 0 30px!important; font-size: rem(13px)!important;
+        &:last-child {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+.boxEmptyCart {
+  width: 100%; height: auto; padding: 0; margin: 60px 0 0; position: relative; @include box-sizing(border-box);
+  & h1 {
+    @include fluid-type(20px, 40px, 320px, 1216px); margin: 0 0 20px; padding: 0; text-align: center; text-transform: uppercase; color: $c5; outline: 0!important;
+  }
+  & p {
+    text-align: center; @include fluid-type(14px, 18px, 320px, 1216px); color: $c5!important; margin: 0 0 15px;
+  }
+  & .btnpr {
+    width: 250px!important;
+  }
+}

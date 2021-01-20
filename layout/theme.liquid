@@ -171,7 +171,7 @@
   </script>
 
   {{ content_for_header }}
-</head>
+{% include 'loadify_loader' %} </head>
 
 <body class="template-{{ request.page_type | handle }}">
 
@@ -183,9 +183,9 @@
 
   {% section 'header' %}
 
-  <div class="page-container PageContainer drawer-page-content" id="PageContainer">
+  <div class="page-container drawer-page-content" id="PageContainer">
 
-    <main class="main-content js-focus-hidden" id="MainContent" role="main" tabindex="-1">
+    <main class="main-content PageContainer js-focus-hidden" id="MainContent" role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>
 
