@@ -3,29 +3,33 @@ import  $ from 'jquery'
 import { isLength } from 'lodash-es';
 
 register('header-section', {
-  isSafari() {return /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);},
-  isChrome() {return /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);},
+  isSafari() {
+    return /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
+  },
+  isChrome() {
+    return /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+  },
   scrolMenu() {
     let c;
     let currentScrollTop = 0;
     let navbar = $('#headerGeneral');
 
-    window.window.addEventListener('scroll', function(e) {
-      const a = $(window).scrollTop();
-      const b = navbar.outerHeight();
-      
+    $(window).scroll(function () {
+      var a = $(window).scrollTop();
+      var b = navbar.outerHeight();
+     
       currentScrollTop = a;
-      
+     
       if (c < currentScrollTop && a > b + b) {
         // navbar.addClass("scrollHUp");
-        if(isSafari() || isChrome()) {
+        if(typeof(isSafari) || typeof(isChrome)) {
           navbar.css('-webkit-transform', 'translateY(-100%)');
         } else {
           navbar.css('transform', 'translateY(-100%)');
         }
       } else if (c > currentScrollTop && !(a <= b)) {
         // navbar.removeClass("scrollHUp");
-        if(isSafari() || isChrome()) {
+        if(typeof(isSafari) || typeof(isChrome)) {
           navbar.css('-webkit-transform', 'translateY(0)');
         } else {
           navbar.css('transform', 'translateY(0)');
@@ -39,7 +43,7 @@ register('header-section', {
     $(window).on("scroll", function() {
       let headerPirn = $("#headerGeneral").outerHeight();
       let sumaHead = headerPirn;
-      if($(window).scrollTop() > sumaHead) {
+      if($(window).scrollTop() > 0) {
           $("#headerGeneral").addClass("activeHead");
       } else {
         $("#headerGeneral").removeClass("activeHead");
@@ -79,11 +83,31 @@ register('header-section', {
     botonabrir.addEventListener('click', menuOpenMobile);
 
     $(document).ready(function(){
+      // Tiempo de carga para el header
+      setTimeout(() => {
+        var head = $('#headerGeneral').outerHeight();
+        var ventana = $(window).width();
+        var alturaBlock = head + 30;
+        let altoBar = $('#annAlt').outerHeight();
+        $('#blockhh').css({ 'height': head+'px' });
+        console.log(altoBar);
+        $("#headerGeneral").css({ 'top': altoBar+'px' });
+      }, 1500);
+
       $('#md').clone().prependTo('#contListMenu').removeAttr('id').show();
       TweenMax.to($('#mm'), 0, {scale: 1.2, opacity: 0, zIndex: -1, force3D: true});
+      $(".mnuContMob [aria-controls]").click(function(e) {   
+        e.preventDefault();
+        var iden = $(this).attr('aria-controls');
+        // console.log(iden);
+        $("#"+iden).toggleClass('show');
+        // $(this).hide().next().addClass('hello');
+      });
     });
   },
-  onLoad() {
+  async onLoad() {
+    this.scrolMenu();
+    this.headScrolDown();
     this.headerFunction();
   },
 });

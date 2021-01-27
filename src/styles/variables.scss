@@ -15,6 +15,8 @@ $fontR: './assets/';
 @include font-face("monbold", "Montserrat-Bold", $file-formats: woff);
 @include font-face("made", "madevon", $file-formats: woff);
 @include font-face("maderegular", "madevonregular", $file-formats: woff);
+@include font-face("dinRegular", "DINNeuzeitGroteskStdLight", $file-formats: woff);
+@include font-face("dinBold", "DINNeuzeitGroteskStdBdCond", $file-formats: woff);
 $monregular: 'monregular', sans-serif;
 $monitali: 'monitali', sans-serif;
 $monthin: 'monthin', sans-serif;
@@ -23,6 +25,8 @@ $monsemi: 'monsemi', sans-serif;
 $monbold: 'monbold', sans-serif;
 $made: 'made', sans-serif;
 $maderegular: 'maderegular', sans-serif;
+$dinreg: 'dinRegular', sans-serif;
+$dinbold: 'dinBold', sans-serif;
 
 // = Colors
 // -----------------------------

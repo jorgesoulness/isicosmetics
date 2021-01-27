@@ -1,10 +1,12 @@
 {
   "current": {
+    "favicon": "shopify:\/\/shop_images\/favicon.jpg",
+    "checkout_logo_image": "shopify:\/\/shop_images\/logo_isicosmetics_horizontal.png",
     "sections": {
       "header": {
         "type": "header",
         "settings": {
-          "logo": "shopify:\/\/shop_images\/logo-isi-2.png",
+          "logo": "shopify:\/\/shop_images\/logo_isicosmetics_horizontal.png",
           "main_linklist": "main-menu",
           "message": true,
           "home_page_only": false,
@@ -172,7 +174,7 @@
           "footer-1"
         ],
         "settings": {
-          "logo_footer": "shopify:\/\/shop_images\/logo-isi-2.png",
+          "logo_footer": "shopify:\/\/shop_images\/logo_main_isicosmetics.png",
           "show_payment_icons": true
         }
       },
@@ -186,7 +188,7 @@
               "text_alignment": "left-slide",
               "slide_title": "Diapositiva de imagen",
               "subheading": "<p>Lorem ipums <strong>texto <\/strong>del slider<\/p>",
-              "color_text": "#131617",
+              "color_text": "#ffe9f1",
               "button_label": "Ir a Contacto"
             }
           },
@@ -197,7 +199,7 @@
               "text_alignment": "right-slide",
               "slide_title": "Diapositiva de imagen",
               "subheading": "<p>Usa este texto para compartir información sobre tu marca con tus clientes. Describe un producto, comparte anuncios o recibe clientes en tu tienda.<\/p>",
-              "color_text": "#131617",
+              "color_text": "#ffffff",
               "button_label": ""
             }
           }
@@ -228,7 +230,8 @@
             "settings": {
               "image": "shopify:\/\/shop_images\/pexels-kinkate-208052.jpg",
               "subheading": "<p>MÓDELO<br\/><strong>COSMETIC<\/strong><\/p>",
-              "color_text": "#131617"
+              "color_text": "#131617",
+              "button_link": "shopify:\/\/collections\/labios"
             }
           },
           "4b8c298b-d1eb-48d8-a3d9-ec7f67a2f18f": {
@@ -305,6 +308,14 @@
           "show_collection_image": true,
           "show_vendor": false,
           "sort_enable": true
+        }
+      },
+      "list-collections-template": {
+        "type": "list-collections-template",
+        "settings": {
+          "display_type": "all",
+          "sort": "alphabetical",
+          "grid": 3
         }
       }
     },

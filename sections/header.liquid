@@ -4,7 +4,7 @@
   {% if section.settings.message %}
     {% if section.settings.home_page_only == false or request.page_type == 'index' %}
 
-      <div class="announcement-bar" role="region" aria-label="{{ 'sections.header.announcement_bar_label' | t }}">
+      <div id="annAlt" class="announcement-bar" role="region" aria-label="{{ 'sections.header.announcement_bar_label' | t }}">
         {%- unless section.settings.message_link == blank -%}
           <a href="{{ section.settings.message_link }}" class="announcement-bar__link">
         {%- endunless -%}
@@ -16,7 +16,8 @@
 
     {% endif %}
   {% endif %}
-  <header class="g-header">
+  <div id="blockhh" class="head-block"></div>
+  <header id="headerGeneral" class="g-header">
     <div class="logo-content">
 {% if request.page_type == 'index' %}
       <h1 class="site-logo">

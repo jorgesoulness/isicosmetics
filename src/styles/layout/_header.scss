@@ -3,28 +3,39 @@
    ======================= */
 
 // Header Principal Sticky
+.head-block {
+  width: 100%; padding: 0; margin: 0 0 0 0; position: relative;
+}
+.search-bar {
+  z-index: 1001!important;
+}
 .g-header {
-  width: 100%; height: auto; @include position(relative, null null null null); padding: 0 0; margin: 0; background-color: $white; z-index: 100; border-bottom: none; @include transition(transform 200ms ease, all 0.25s); box-shadow: 0 0 0 rgba($black, 0.0);
+  width: 100%; height: auto; @include position(fixed, 0 null null 0); padding: 0 0; margin: 0; background-color: $white; z-index: 100; border-bottom: none; @include transition(transform 200ms ease, all 0.25s); box-shadow: 0 0 0 rgba($black, 0.0); z-index: 1000;
   &.activeHead {
-    box-shadow: 0 4px 10px rgba($black, 0.10);
+    box-shadow: 0 4px 10px rgba($black, 0.10); top: 0!important;
   }
 }
 // Barra mensaje
 .announcement-bar {
   padding: 0!important; background-color: $col1; @include box-sizing(border-box); border-bottom: 1px solid $c2!important;
   &__message {
-    font-size: 12px!important; font-family: $monsemi; color: $c5!important; padding: 6px 22px!important;
+    font-size: 10px!important; font-family: $monsemi; color: $c5!important; padding: 6px 22px!important;
+  }
+  @media all and (min-width: 750px) {
+    &__message {
+      font-size: 13px!important;
+    }
   }
 }
 // Logo Principal Estilos
 .logo-content {
-  width: 100%; height: auto; padding: 13px 0; margin: 0; position: relative; border-bottom: 1px solid $c2; @include box-sizing(border-box);
+  width: 100%; height: auto; padding: 20px 0; margin: 0; position: relative; border-bottom: 1px solid $c2; @include box-sizing(border-box);
   & .site-logo {
-    width: 85px; height: auto; padding: 0; margin: 0 auto 0 10px; display: block;
+    width: 100px; height: auto; padding: 0; margin: 0 auto 0 10px; display: block;
     & a {
       display: block; width: auto; height: auto; margin: 0 auto;
       & img {
-        display: block; width: 100%; max-width: 85px; height: auto; margin: 0 auto; padding: 0;
+        display: block; width: 100%; max-width: 120px; height: auto; margin: 0 auto; padding: 0;
       }
       & .site-title {
         font-size: 0; text-indent: -9999px; color: $white; opacity: 0; margin: 0; padding: 0;
@@ -32,23 +43,23 @@
     }
   }
   @media all and (min-width: 768px) {
-    padding: 25px 0;
+    padding: 18px 0;
     & .site-logo {
-      width: 100px;
+      width: 230px;
       & a {
         & img {
-          max-width: 100px;
+          max-width: 230px;
         }
       }
     }
   }
   @media all and (min-width: 992px) {
-    padding: 35px 0; border-bottom: none;
+    padding: 20px 0; border-bottom: none;
     & .site-logo {
-      width: 144px; margin: 0 auto;
+      width: 296px; margin: 0 auto;
       & a {
         & img {
-          max-width: 144px;
+          max-width: 296px;
         }
       }
     }

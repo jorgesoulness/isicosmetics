@@ -1,23 +1,29 @@
 {%- if section.settings.show_product_recommendations -%}
   {%- if recommendations.performed -%}
     {%- if recommendations.products_count > 0 -%}
-      <div class="product-recommendations__inner">
-        {%- if section.settings.heading != blank -%}
-          <div class="section-header text-center">
-            <h2>{{ section.settings.heading | escape }}</h2>
-          </div>
-        {%- endif -%}
-        <ul class="grid grid--uniform grid--view-items">
-          {%- for product in recommendations.products -%}
-            <li class="grid__item small--one-half medium-up--one-quarter">
-              {% include 'product-card-grid', max_height: 250, product: product, show_vendor: section.settings.show_vendor %}
-            </li>
-          {%- endfor -%}
-        </ul>
-      </div>
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-full">
+            <div class="contListCollection">
+            {%- if section.settings.heading != blank -%}
+              <div class="titleHeadRecommendations text-center">
+                <h2>{{ section.settings.heading | escape }}</h2>
+              </div>
+            {%- endif -%}
+              <ul class="grid grid--uniform grid--view-items">
+              {%- for product in recommendations.products -%}
+                <li class="grid__item small--one-half medium-up--one-quarter">
+                    {% include 'product-card-grid', max_height: 250, product: product, show_vendor: section.settings.show_vendor %}
+                </li>
+              {%- endfor -%}
+              </ul><!-- end.ul -->
+            </div><!-- end.contListCollection -->
+          </div><!-- end.column -->
+        </div><!-- end.columns -->
+      </div><!-- end.container -->
     {%- endif -%}
   {%- else  -%}
-    <div class="page-width" data-base-url="{{ routes.product_recommendations_url }}" data-product-id="{{ product.id }}" data-section-id="{{ section.id }}" data-section-type="product-recommendations"></div>
+    <section class="sectionRecommendations" data-base-url="{{ routes.product_recommendations_url }}" data-product-id="{{ product.id }}" data-section-id="{{ section.id }}" data-section-type="product-recommendations"></section><!-- end.sectionRecommendations -->
   {%- endif -%}
 {%- endif -%}
 

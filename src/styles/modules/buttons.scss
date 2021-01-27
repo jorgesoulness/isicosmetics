@@ -100,6 +100,7 @@
     &--youtube { &:before, &:after { content: '\ebfd'; } }
     &--vimeo { &:before, &:after { content: '\ebe3'; } }
     &--linkedin { &:before, &:after { content: '\eb15'; } }
+    &--pinterest { &:before, &:after { content: '\eb4d'; } }
   }
   &.rounded {
     @include border-top-radius(6px); @include border-bottom-radius(6px);

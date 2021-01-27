@@ -78,8 +78,8 @@
               {% if section.settings.sort_enable %}
                 <div class="filters-toolbar__item-child">
                   {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
-                  <label class="filters-toolbar__label select-label" for="SortBy">{{ 'collections.sorting.title' | t }}</label>
-                  <div class="filters-toolbar__input-wrapper select-group">
+                  <!-- <label class="filters-toolbar__label select-label" for="SortBy">{{ 'collections.sorting.title' | t }}</label> -->
+                  <div class="filters-toolbar__input-wrapper select-groupLight">
                     <select name="sort_by" id="SortBy"
                       class="filters-toolbar__input hidden"
                       aria-describedby="a11y-refresh-page-message a11y-selection-message"
@@ -106,7 +106,7 @@
   </header>
 
   <div class="container">
-    <div class="columns">
+    <div class="columns is-centered">
       <div class="column is-full" id="Collection">
         <div class="contListCollection">
         {% if section.settings.layout == 'grid' %}
@@ -116,6 +116,7 @@
             {%- assign center_class = ' centerList' -%}
           {% when 3 %}
             {%- assign grid_item_width = 'small--one-half medium-up--one-third' -%}
+            {%- assign center_class = ' centerList' -%}
           {% when 4 %}
             {%- assign grid_item_width = 'small--one-half medium-up--one-quarter' -%}
           {% when 5 %}

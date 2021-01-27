@@ -455,21 +455,21 @@ __webpack_require__.r(__webpack_exports__);
     let c;
     let currentScrollTop = 0;
     let navbar = jquery__WEBPACK_IMPORTED_MODULE_1___default()('#headerGeneral');
-    window.window.addEventListener('scroll', function (e) {
-      const a = jquery__WEBPACK_IMPORTED_MODULE_1___default()(window).scrollTop();
-      const b = navbar.outerHeight();
+    jquery__WEBPACK_IMPORTED_MODULE_1___default()(window).scroll(function () {
+      var a = jquery__WEBPACK_IMPORTED_MODULE_1___default()(window).scrollTop();
+      var b = navbar.outerHeight();
       currentScrollTop = a;
 
       if (c < currentScrollTop && a > b + b) {
         // navbar.addClass("scrollHUp");
-        if (isSafari() || isChrome()) {
+        if (typeof isSafari || typeof isChrome) {
           navbar.css('-webkit-transform', 'translateY(-100%)');
         } else {
           navbar.css('transform', 'translateY(-100%)');
         }
       } else if (c > currentScrollTop && !(a <= b)) {
         // navbar.removeClass("scrollHUp");
-        if (isSafari() || isChrome()) {
+        if (typeof isSafari || typeof isChrome) {
           navbar.css('-webkit-transform', 'translateY(0)');
         } else {
           navbar.css('transform', 'translateY(0)');
@@ -486,7 +486,7 @@ __webpack_require__.r(__webpack_exports__);
       let headerPirn = jquery__WEBPACK_IMPORTED_MODULE_1___default()("#headerGeneral").outerHeight();
       let sumaHead = headerPirn;
 
-      if (jquery__WEBPACK_IMPORTED_MODULE_1___default()(window).scrollTop() > sumaHead) {
+      if (jquery__WEBPACK_IMPORTED_MODULE_1___default()(window).scrollTop() > 0) {
         jquery__WEBPACK_IMPORTED_MODULE_1___default()("#headerGeneral").addClass("activeHead");
       } else {
         jquery__WEBPACK_IMPORTED_MODULE_1___default()("#headerGeneral").removeClass("activeHead");
@@ -543,6 +543,20 @@ __webpack_require__.r(__webpack_exports__);
     var botonabrir = document.querySelector(selecciona.botonabrir);
     botonabrir.addEventListener('click', menuOpenMobile);
     jquery__WEBPACK_IMPORTED_MODULE_1___default()(document).ready(function () {
+      // Tiempo de carga para el header
+      setTimeout(() => {
+        var head = jquery__WEBPACK_IMPORTED_MODULE_1___default()('#headerGeneral').outerHeight();
+        var ventana = jquery__WEBPACK_IMPORTED_MODULE_1___default()(window).width();
+        var alturaBlock = head + 30;
+        let altoBar = jquery__WEBPACK_IMPORTED_MODULE_1___default()('#annAlt').outerHeight();
+        jquery__WEBPACK_IMPORTED_MODULE_1___default()('#blockhh').css({
+          'height': head + 'px'
+        });
+        console.log(altoBar);
+        jquery__WEBPACK_IMPORTED_MODULE_1___default()("#headerGeneral").css({
+          'top': altoBar + 'px'
+        });
+      }, 1500);
       jquery__WEBPACK_IMPORTED_MODULE_1___default()('#md').clone().prependTo('#contListMenu').removeAttr('id').show();
       TweenMax.to(jquery__WEBPACK_IMPORTED_MODULE_1___default()('#mm'), 0, {
         scale: 1.2,
@@ -550,10 +564,18 @@ __webpack_require__.r(__webpack_exports__);
         zIndex: -1,
         force3D: true
       });
+      jquery__WEBPACK_IMPORTED_MODULE_1___default()(".mnuContMob [aria-controls]").click(function (e) {
+        e.preventDefault();
+        var iden = jquery__WEBPACK_IMPORTED_MODULE_1___default()(this).attr('aria-controls'); // console.log(iden);
+
+        jquery__WEBPACK_IMPORTED_MODULE_1___default()("#" + iden).toggleClass('show'); // $(this).hide().next().addClass('hello');
+      });
     });
   },
 
-  onLoad() {
+  async onLoad() {
+    this.scrolMenu();
+    this.headScrolDown();
     this.headerFunction();
   }
 
@@ -11448,6 +11470,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shopify_theme_currency__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
 /* harmony import */ var _shopify_theme_sections__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1);
 /* harmony import */ var _shopify_theme_a11y__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(10);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(4);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_4__);
 /**
  * Product Template Script
  * ------------------------------------------------------------------------------
@@ -11459,8 +11483,31 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 (0,_shopify_theme_sections__WEBPACK_IMPORTED_MODULE_2__.register)('product', {
-  async onLoad() {}
+  buttonNumber() {
+    jquery__WEBPACK_IMPORTED_MODULE_4___default()(".btnS").on("click", function () {
+      var $button = jquery__WEBPACK_IMPORTED_MODULE_4___default()(this);
+      var oldValue = $button.parent().find("input").val();
+
+      if ($button.hasClass('add1')) {
+        var newVal = parseFloat(oldValue) + 1;
+      } else {
+        // Don't allow decrementing below zero
+        if (oldValue > 0) {
+          var newVal = parseFloat(oldValue) - 1;
+        } else {
+          newVal = 0;
+        }
+      }
+
+      $button.parent().find("input").val(newVal);
+    });
+  },
+
+  async onLoad() {
+    this.buttonNumber();
+  }
 
 });
 
