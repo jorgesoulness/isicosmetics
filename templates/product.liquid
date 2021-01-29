@@ -6,10 +6,9 @@
 {% section 'product-recommendations' %}
 
 {% if collection %}
-  <div class="text-center return-link-wrapper page-width">
-    <a href="{{ collection.url }}" class="btn btn--secondary btn--has-icon-before return-link">
-      {% include 'icon-arrow-left' %}
-      {{ 'products.product.back_to_collection' | t: title: collection.title }}
+  <div class="returnPageProd text-center page-width">
+    <a href="{{ collection.url }}" class="btnpr btnpr__primary btnpr__primary--border return-link">
+      <span>{{ 'products.product.back_to_collection' | t: title: collection.title }}</span><i class="lni lni-chevron-right"></i>
     </a>
   </div>
 {% endif %}

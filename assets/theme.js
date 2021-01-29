@@ -2856,28 +2856,28 @@ theme.Header = (function() {
   var cache = {};
 
   function init() {
-    cacheSelectors();
+    // cacheSelectors();
     styleDropdowns(document.querySelectorAll(selectors.siteNavHasDropdown));
     positionFullWidthDropdowns();
 
-    cache.parents.forEach(function(element) {
-      element.addEventListener('click', submenuParentClickHandler);
-    });
+    // cache.parents.forEach(function(element) {
+    //   element.addEventListener('click', submenuParentClickHandler);
+    // });
 
     // check when we're leaving a dropdown and close the active dropdown
-    cache.siteNavChildLink.forEach(function(element) {
-      element.addEventListener('focusout', submenuFocusoutHandler);
-    });
+    // cache.siteNavChildLink.forEach(function(element) {
+    //   element.addEventListener('focusout', submenuFocusoutHandler);
+    // });
 
-    cache.topLevel.forEach(function(element) {
-      element.addEventListener('focus', hideDropdown);
-    });
+    // cache.topLevel.forEach(function(element) {
+    //   element.addEventListener('focus', hideDropdown);
+    // });
 
-    cache.subMenuLinks.forEach(function(element) {
-      element.addEventListener('click', stopImmediatePropagation);
-    });
+    // cache.subMenuLinks.forEach(function(element) {
+    //   element.addEventListener('click', stopImmediatePropagation);
+    // });
 
-    window.addEventListener('resize', resizeHandler);
+    // window.addEventListener('resize', resizeHandler);
   }
 
   function stopImmediatePropagation(event) {
