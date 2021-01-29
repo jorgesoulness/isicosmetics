@@ -1,88 +1,94 @@
 {% include 'search-drawer' %}
 
 <div data-section-id="{{ section.id }}" data-section-type="header-section" data-header-section>
-  {% if section.settings.message %}
-    {% if section.settings.home_page_only == false or request.page_type == 'index' %}
-
-      <div id="annAlt" class="announcement-bar" role="region" aria-label="{{ 'sections.header.announcement_bar_label' | t }}">
-        {%- unless section.settings.message_link == blank -%}
-          <a href="{{ section.settings.message_link }}" class="announcement-bar__link">
-        {%- endunless -%}
-            <p class="announcement-bar__message">{{ section.settings.message_text | escape }}</p>
-        {%- unless section.settings.message_link == blank -%}
-          </a>
-        {%- endunless -%}
-      </div>
-
-    {% endif %}
-  {% endif %}
+{% if request.page_type == 'index' %}
   <div id="blockhh" class="head-block"></div>
-  <header id="headerGeneral" class="g-header">
-    <div class="logo-content">
-{% if request.page_type == 'index' %}
-      <h1 class="site-logo">
+  <div id="headerGeneral" class="headerFix">
 {% else %}
-      <div class="site-logo">
+  <div>
 {% endif %}
-  {% if section.settings.logo %}
-    {%- assign img_url = section.settings.logo | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-        <a href="{{ routes.root_url }}" data-image-loading-animation>
-    {% capture logo_alt %}{{ section.settings.logo.alt | default: shop.name }}{% endcapture %}
-          <img class="lazyload js"
-               src="{{ section.settings.logo | img_url: '300x300' }}"
-               data-src="{{ img_url }}"
-               data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
-               data-aspectratio="{{ section.settings.logo.aspect_ratio }}"
-               data-sizes="auto"
-               alt="{{ logo_alt | escape }}">
-        </a>
-  {% else %}
-        <a class="site-header__logo-link" href="{{ routes.root_url }}">{{ shop.name }}</a>
-  {% endif %}
-{% if request.page_type == 'index' %}
-      </h1>
-{% else %}
-      </div>
-{% endif %}
+    {% if section.settings.message %}
+      {% if section.settings.home_page_only == false or request.page_type == 'index' %}
 
-      <div class="toolsHead">
-        <ul class="controlsHead">
-      {% if shop.customer_accounts_enabled %}
-        {% if customer %}
-          <li class="controlsHead__item">
-            <a class="controlsHead__link controlsHead__link--users" href="{{ routes.account_url }}" data-text="{{ 'layout.customer.account' | t }}">{% include 'icon-login' %}</a>
-          </li>
-        {% else %}
-          <li class="controlsHead__item">
-            <a class="controlsHead__link controlsHead__link--users" href="{{ routes.account_login_url }}" data-text="{{ 'layout.customer.log_in' | t }}">{% include 'icon-login' %}</a>
-          </li>
-        {% endif %}
+        <div id="annAlt" class="announcement-bar" role="region" aria-label="{{ 'sections.header.announcement_bar_label' | t }}">
+          {%- unless section.settings.message_link == blank -%}
+            <a href="{{ section.settings.message_link }}" class="announcement-bar__link">
+          {%- endunless -%}
+              <p class="announcement-bar__message">{{ section.settings.message_text | escape }}</p>
+          {%- unless section.settings.message_link == blank -%}
+            </a>
+          {%- endunless -%}
+        </div>
+
       {% endif %}
-          <li class="controlsHead__item">
-            <button type="button" class="controlsHead__link controlsHead__link--users js-drawer-open-top" data-predictive-search-open-drawer>{% include 'icon-search' %}</button>
-          </li>
-          <li class="controlsHead__item">
-            <a class="controlsHead__link controlsHead__link--carrito{% if cart.item_count == 0 %} hideCount{% endif %}" href="{{ routes.cart_url }}" data-cart-count-bubble>
-              {% include 'icon-cart' %}
-              <span data-cart-count>{{ cart.item_count }}</span>
-            </a>
-          </li>
-      {% unless linklists[section.settings.main_linklist] == blank %}
-          <li class="controlsHead__item">
-            <a id="openMenuMobile" class="controlsHead__link controlsHead__link--menuMobile" href="#" data-menu-expand="false">
-              <span></span>
-            </a>
-          </li>
-      {% endunless %}
-        </ul>
+    {% endif %}
+    <header class="g-header">
+      <div class="logo-content">
+  {% if request.page_type == 'index' %}
+        <h1 class="site-logo">
+  {% else %}
+        <div class="site-logo">
+  {% endif %}
+    {% if section.settings.logo %}
+      {%- assign img_url = section.settings.logo | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+          <a href="{{ routes.root_url }}" data-image-loading-animation>
+      {% capture logo_alt %}{{ section.settings.logo.alt | default: shop.name }}{% endcapture %}
+            <img class="lazyload js"
+                src="{{ section.settings.logo | img_url: '300x300' }}"
+                data-src="{{ img_url }}"
+                data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                data-aspectratio="{{ section.settings.logo.aspect_ratio }}"
+                data-sizes="auto"
+                alt="{{ logo_alt | escape }}">
+          </a>
+    {% else %}
+          <a class="site-header__logo-link" href="{{ routes.root_url }}">{{ shop.name }}</a>
+    {% endif %}
+  {% if request.page_type == 'index' %}
+        </h1>
+  {% else %}
+        </div>
+  {% endif %}
+
+        <div class="toolsHead">
+          <ul class="controlsHead">
+        {% if shop.customer_accounts_enabled %}
+          {% if customer %}
+            <li class="controlsHead__item">
+              <a class="controlsHead__link controlsHead__link--users" href="{{ routes.account_url }}" data-text="{{ 'layout.customer.account' | t }}">{% include 'icon-login' %}</a>
+            </li>
+          {% else %}
+            <li class="controlsHead__item">
+              <a class="controlsHead__link controlsHead__link--users" href="{{ routes.account_login_url }}" data-text="{{ 'layout.customer.log_in' | t }}">{% include 'icon-login' %}</a>
+            </li>
+          {% endif %}
+        {% endif %}
+            <li class="controlsHead__item">
+              <button type="button" class="controlsHead__link controlsHead__link--users js-drawer-open-top" data-predictive-search-open-drawer>{% include 'icon-search' %}</button>
+            </li>
+            <li class="controlsHead__item">
+              <a class="controlsHead__link controlsHead__link--carrito{% if cart.item_count == 0 %} hideCount{% endif %}" href="{{ routes.cart_url }}" data-cart-count-bubble>
+                {% include 'icon-cart' %}
+                <span data-cart-count>{{ cart.item_count }}</span>
+              </a>
+            </li>
+        {% unless linklists[section.settings.main_linklist] == blank %}
+            <li class="controlsHead__item">
+              <a id="openMenuMobile" class="controlsHead__link controlsHead__link--menuMobile" href="#" data-menu-expand="false">
+                <span></span>
+              </a>
+            </li>
+        {% endunless %}
+          </ul>
+        </div>
       </div>
-    </div>
-    <div class="menuMain">
-      <nav class="menuDesk">
-        {% include 'site-nav', linklist: section.settings.main_linklist %}
-      </nav>
-    </div>
-  </header>
+      <div class="menuMain">
+        <nav class="menuDesk">
+          {% include 'site-nav', linklist: section.settings.main_linklist %}
+        </nav>
+      </div>
+    </header>
+  </div>
 </div>
 
 <!-- MenuMobile -->

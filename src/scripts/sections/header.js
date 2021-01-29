@@ -21,14 +21,12 @@ register('header-section', {
       currentScrollTop = a;
      
       if (c < currentScrollTop && a > b + b) {
-        // navbar.addClass("scrollHUp");
         if(typeof(isSafari) || typeof(isChrome)) {
           navbar.css('-webkit-transform', 'translateY(-100%)');
         } else {
           navbar.css('transform', 'translateY(-100%)');
         }
       } else if (c > currentScrollTop && !(a <= b)) {
-        // navbar.removeClass("scrollHUp");
         if(typeof(isSafari) || typeof(isChrome)) {
           navbar.css('-webkit-transform', 'translateY(0)');
         } else {
@@ -42,11 +40,21 @@ register('header-section', {
     //WindowSrcoll
     $(window).on("scroll", function() {
       let headerPirn = $("#headerGeneral").outerHeight();
+      let ventana = $(window).scrollTop();
       let sumaHead = headerPirn;
-      if($(window).scrollTop() > 0) {
-          $("#headerGeneral").addClass("activeHead");
+      var altoBar = $('#annAlt');
+      // console.log(ventana, headerPirn);
+      if(ventana > 0) {
+        $("#headerGeneral").addClass("activeHead");
       } else {
         $("#headerGeneral").removeClass("activeHead");
+      }
+
+      // valida alto
+      if(ventana > 30) {
+        altoBar.fadeOut();
+      } else {
+        altoBar.fadeIn();
       }
     });
   },
@@ -88,10 +96,10 @@ register('header-section', {
         var head = $('#headerGeneral').outerHeight();
         var ventana = $(window).width();
         var alturaBlock = head + 30;
-        let altoBar = $('#annAlt').outerHeight();
+        // let altoBar = $('#annAlt').outerHeight();
         $('#blockhh').css({ 'height': head+'px' });
-        console.log(altoBar);
-        $("#headerGeneral").css({ 'top': altoBar+'px' });
+        // console.log(altoBar);
+        // $("#headerGeneral").css({ 'top': altoBar+'px' });
       }, 1500);
 
       $('#md').clone().prependTo('#contListMenu').removeAttr('id').show();
@@ -105,9 +113,31 @@ register('header-section', {
       });
     });
   },
+  readyTabs() {
+    $('[data-tab-account]').on('click', (e) => {
+      var tabName = (e.currentTarget.attributes[0].nodeValue);
+      removeActive();
+      hideAll();
+      console.log(tabName)
+      $('#' + tabName).addClass('is-active');
+      $('#' + tabName + '-content').removeClass('HideT');
+    });
+
+    var removeActive = () => {
+      $('li').each(function() {
+        $(this).removeClass('is-active');
+      });
+    }
+
+    var hideAll = () => {
+      $('#order-tab-content').addClass('HideT');
+      $('#address-tab-content').addClass('HideT');
+    }
+  },
   async onLoad() {
     this.scrolMenu();
     this.headScrolDown();
     this.headerFunction();
-  },
+    this.readyTabs();
+  }
 });

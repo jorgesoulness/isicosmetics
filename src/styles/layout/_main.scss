@@ -94,14 +94,21 @@ article {
     & .rte {
       text-align: center; @include fluid-type(13px, 16px, 320px, 1216px);
       & a {
-        color: $col6!important; @include transition(all 300ms ease);
+        color: $c3!important; @include transition(all 300ms ease);
         &:hover {
-          color: $col4!important;
+          color: $c5!important;
         }
+      }
+      & strong,
+      & b {
+        font-family: $monsemi!important;
       }
     }
     & .btnpr {
-      width: 250px; margin: 0!important;
+      width: 250px; margin: 0!important; background: $c5!important; color: $col1!important; border: 1px solid $c5!important;
+      &:hover {
+        background: $c4!important; color: $col1!important;
+      }
     }
     @media all and (min-width: 750px) {
       & h1 {
@@ -139,20 +146,26 @@ article {
 
 // ContactForm Section
 .contactSection {
-  width: 100%; height: auto; padding: 0; margin: 0 0 60px; position: relative; @include box-sizing(border-box);
+  width: 100%; height: auto; padding: 0 10px; margin: 0 0 60px; position: relative; @include box-sizing(border-box);
   & .contformulario {
     width: 100%; height: auto; padding: 0; margin: 0; position: relative; @include box-sizing(border-box);
     & .checkCustom {
       width: 100%; height: auto; padding: 0; margin: 0 0 20px; position: relative; @include box-sizing(border-box); text-align: center;
     }
     & .btnpr {
-      width: 220px; display: block; margin: 0 auto;
+      width: 220px; display: block; margin: 0 auto; background-color: $c5!important; color: $col1!important; border: 1px solid $c5!important;
+      &:hover {
+        background-color: $c3!important; color: $white!important; border-color: $c3!important;
+      }
     }
   }
   & .fieldsLogin {
     width: 100%; height: auto; padding: 0; margin: 20px 0 0; position: relative;
+    .FieldCheckForms {
+      margin-bottom: 10px;
+    }
     & .textRecover {
-      margin-bottom: 15px; @include fluid-type(12px, 14px, 320px, 1216px);
+      margin-bottom: 5px; @include fluid-type(12px, 14px, 320px, 1216px);
       & a {
         color: $c5!important; text-decoration: underline; @include transition(all 300ms);
         &:hover {
@@ -172,6 +185,9 @@ article {
         }
       }
     }
+  }
+  @media all and (min-width: 768px) {
+    padding: 0;
   }
 }
 .pageGeneric {
@@ -316,7 +332,10 @@ article {
 .returnPageProd {
   padding-top: 50px!important; margin-bottom: 40px!important;
   & .btnpr {
-    width: 280px!important;
+    width: 280px!important; background: $c5!important; color: $col1!important; border: 1px solid $c5!important;
+    &:hover {
+      background: $c4!important; color: $col1!important;
+    }
   }
 }
 

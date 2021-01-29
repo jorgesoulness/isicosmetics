@@ -12,7 +12,7 @@
           {% when 2 %}
             {%- assign class_height = ' heightBoxProd' -%}
           {% endcase %}
-          <div class="prodListGrid{% unless product.available %} sold-out-prod{% endunless %}{% if collection.products_count <= 3 %} heightBoxProd{% endif %}">
+          <div class="prodListGrid{% unless product.available %} sold-out-prod{% endunless %}{% if collection.products_count <= 2 %} heightBoxProd{% endif %}">
           {% capture img_id %}ProductCardImage-{{ section.id }}-{{ product.id }}{% endcapture %}
           {% capture wrapper_id %}ProductCardImageWrapper-{{ section.id }}-{{ product.id }}{% endcapture %}
           {%- assign preview_image = product.featured_media.preview_image -%}

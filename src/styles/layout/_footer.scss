@@ -135,7 +135,7 @@
   & form {
     width: 100%; height: auto; padding: 0; margin: 0; border: 0; @include displayFlex(flex, column, center, center, wrap);
     & .animatedField {
-      width: 70%;
+      width: 70%; margin-bottom: 15px;
     }
     & button {
       width: 30%; margin-top: 10px;
@@ -146,6 +146,13 @@
   }
   & h3 {
     @include fluid-type(18px, 28px, 320px, 1216px); margin: 0 0 15px; padding: 0;
+  }
+  @media all and (min-width: 394px) {
+    & form {
+      & .animatedField {
+        margin-bottom: inherit;
+      }
+    }
   }
   @media all and (min-width: 769px) {
     & h3 {

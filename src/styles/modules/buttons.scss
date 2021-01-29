@@ -146,9 +146,9 @@
       }
     }
     &--borderBlack {
-      background: $c5; color: $col1; border: 1px solid $c5;
+      background: $c5!important; color: $col1!important; border: 1px solid $c5!important;
       &:hover {
-        background: $c4; color: $col1;
+        background: $c4!important; color: $col1!important;
       }
     }
     &--borderLight {

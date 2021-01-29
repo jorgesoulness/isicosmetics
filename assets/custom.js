@@ -461,14 +461,12 @@ __webpack_require__.r(__webpack_exports__);
       currentScrollTop = a;
 
       if (c < currentScrollTop && a > b + b) {
-        // navbar.addClass("scrollHUp");
         if (typeof isSafari || typeof isChrome) {
           navbar.css('-webkit-transform', 'translateY(-100%)');
         } else {
           navbar.css('transform', 'translateY(-100%)');
         }
       } else if (c > currentScrollTop && !(a <= b)) {
-        // navbar.removeClass("scrollHUp");
         if (typeof isSafari || typeof isChrome) {
           navbar.css('-webkit-transform', 'translateY(0)');
         } else {
@@ -484,12 +482,21 @@ __webpack_require__.r(__webpack_exports__);
     //WindowSrcoll
     jquery__WEBPACK_IMPORTED_MODULE_1___default()(window).on("scroll", function () {
       let headerPirn = jquery__WEBPACK_IMPORTED_MODULE_1___default()("#headerGeneral").outerHeight();
+      let ventana = jquery__WEBPACK_IMPORTED_MODULE_1___default()(window).scrollTop();
       let sumaHead = headerPirn;
+      var altoBar = jquery__WEBPACK_IMPORTED_MODULE_1___default()('#annAlt'); // console.log(ventana, headerPirn);
 
-      if (jquery__WEBPACK_IMPORTED_MODULE_1___default()(window).scrollTop() > 0) {
+      if (ventana > 0) {
         jquery__WEBPACK_IMPORTED_MODULE_1___default()("#headerGeneral").addClass("activeHead");
       } else {
         jquery__WEBPACK_IMPORTED_MODULE_1___default()("#headerGeneral").removeClass("activeHead");
+      } // valida alto
+
+
+      if (ventana > 30) {
+        altoBar.fadeOut();
+      } else {
+        altoBar.fadeIn();
       }
     });
   },
@@ -547,15 +554,12 @@ __webpack_require__.r(__webpack_exports__);
       setTimeout(() => {
         var head = jquery__WEBPACK_IMPORTED_MODULE_1___default()('#headerGeneral').outerHeight();
         var ventana = jquery__WEBPACK_IMPORTED_MODULE_1___default()(window).width();
-        var alturaBlock = head + 30;
-        let altoBar = jquery__WEBPACK_IMPORTED_MODULE_1___default()('#annAlt').outerHeight();
+        var alturaBlock = head + 30; // let altoBar = $('#annAlt').outerHeight();
+
         jquery__WEBPACK_IMPORTED_MODULE_1___default()('#blockhh').css({
           'height': head + 'px'
-        });
-        console.log(altoBar);
-        jquery__WEBPACK_IMPORTED_MODULE_1___default()("#headerGeneral").css({
-          'top': altoBar + 'px'
-        });
+        }); // console.log(altoBar);
+        // $("#headerGeneral").css({ 'top': altoBar+'px' });
       }, 1500);
       jquery__WEBPACK_IMPORTED_MODULE_1___default()('#md').clone().prependTo('#contListMenu').removeAttr('id').show();
       TweenMax.to(jquery__WEBPACK_IMPORTED_MODULE_1___default()('#mm'), 0, {
@@ -573,10 +577,33 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
 
+  readyTabs() {
+    jquery__WEBPACK_IMPORTED_MODULE_1___default()('[data-tab-account]').on('click', e => {
+      var tabName = e.currentTarget.attributes[0].nodeValue;
+      removeActive();
+      hideAll();
+      console.log(tabName);
+      jquery__WEBPACK_IMPORTED_MODULE_1___default()('#' + tabName).addClass('is-active');
+      jquery__WEBPACK_IMPORTED_MODULE_1___default()('#' + tabName + '-content').removeClass('HideT');
+    });
+
+    var removeActive = () => {
+      jquery__WEBPACK_IMPORTED_MODULE_1___default()('li').each(function () {
+        jquery__WEBPACK_IMPORTED_MODULE_1___default()(this).removeClass('is-active');
+      });
+    };
+
+    var hideAll = () => {
+      jquery__WEBPACK_IMPORTED_MODULE_1___default()('#order-tab-content').addClass('HideT');
+      jquery__WEBPACK_IMPORTED_MODULE_1___default()('#address-tab-content').addClass('HideT');
+    };
+  },
+
   async onLoad() {
     this.scrolMenu();
     this.headScrolDown();
     this.headerFunction();
+    this.readyTabs();
   }
 
 });
@@ -15378,16 +15405,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 (0,_shopify_theme_sections__WEBPACK_IMPORTED_MODULE_0__.register)('collection-slide-section', {
   slideProducts() {
     jquery__WEBPACK_IMPORTED_MODULE_1___default()('.slideProductsColl').slick({
       dots: false,
-      infinite: false,
+      infinite: true,
       speed: 500,
       slidesToShow: 4,
       slidesToScroll: 4,
       prevArrow: jquery__WEBPACK_IMPORTED_MODULE_1___default()('#prevProdColl'),
       nextArrow: jquery__WEBPACK_IMPORTED_MODULE_1___default()('#nextProdColl'),
+      autoplay: true,
+      autoplaySpeed: 3000,
       responsive: [{
         breakpoint: 769,
         settings: {
@@ -15396,6 +15426,12 @@ __webpack_require__.r(__webpack_exports__);
         }
       }, {
         breakpoint: 556,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2
+        }
+      }, {
+        breakpoint: 320,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2

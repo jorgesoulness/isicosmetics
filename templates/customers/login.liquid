@@ -14,7 +14,7 @@
         </div><!-- end.column -->
       </div><!--  end.columns -->
       <div class="columns is-centered">
-        <div class="column is-full-fifths-tablet is-half-desktop">
+        <div class="column is-full is-half-tablet is-two-fifths-desktop">
           <div class="contformulario">
         {% form 'customer_login', novalidate: 'novalidate' %}
 
@@ -73,15 +73,14 @@
                 <div class="field">
                   <div class="control">
                     <div class="fieldsLogin text-center">
+                      <div class="FieldCheckForms text-center">
+                        <input type="checkbox" class="CheckStyle" name="customer[acepto]" id="CustomerAcepto" value="1">
+                        <label for="CustomerAcepto">He leído y acepto el <a href="/aviso-de-privacidad">Aviso de Privacidad</a>.</label>
+                      </div>          
+                      <button type="submit" value="{{ 'customer.login.sign_in' | t }}" class="btnpr btnpr__primary btnpr__primary--border"><span>Iniciar Sesión</span><i class="lni lni-chevron-right"></i></button>
                       {% if form.password_needed %}
                         <p class="textRecover"><a href="#recover" id="RecoverPassword">{{ 'customer.login.forgot_password' | t }}</a></p>
                       {% endif %}
-          
-                      <button type="submit" value="{{ 'customer.login.sign_in' | t }}" class="btnpr btnpr__primary btnpr__primary--border"><span>Iniciar Sesión</span><i class="lni lni-chevron-right"></i></button>
-          
-                      <p class="textCreate">
-                        {{ 'layout.customer.create_account' | t | customer_register_link }}
-                      </p>
                     </div>
                   </div>
                 </div>
@@ -89,6 +88,14 @@
             </div><!-- end.fieldsLogin -->
         {% endform %}
           </div><!-- end.contactSec -->
+        </div><!-- end.column -->
+        <div class="column is-full is-half-tablet is-two-fifths-desktop">
+          <div class="boxCreate">
+            <p class="textCreate">
+              <strong>Si no tienes cuenta, ingresa al siguiente enlace:</strong><br>
+              {{ 'layout.customer.create_account' | t | customer_register_link }}
+            </p>
+          </div>
         </div><!-- end.column -->
       </div><!--  end.columns -->
     </div><!-- end.container -->
